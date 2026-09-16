@@ -792,6 +792,11 @@ p {
   box-shadow: var(--shadow-card);
 }
 
+.person-card--lg img {
+  width: 168px;
+  height: 196px;
+}
+
 .person-card__name {
   font-weight: 700;
   color: var(--color-primary);
