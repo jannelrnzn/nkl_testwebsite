@@ -607,6 +607,21 @@ p {
   font-weight: 700;
 }
 
+.dot-list li {
+  position: relative;
+  padding-left: var(--space-md);
+  margin-bottom: var(--space-xs);
+  color: var(--color-gray-700);
+}
+
+.dot-list li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0.25rem;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
 /* Info-/Kennzahlen-Leiste */
 .stat-bar {
   display: grid;
