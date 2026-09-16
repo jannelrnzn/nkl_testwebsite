@@ -733,6 +733,76 @@ p {
   flex-shrink: 0;
 }
 
+/* Zeitleiste (z. B. Historie) */
+.timeline {
+  position: relative;
+  margin-left: 0.75rem;
+  padding-left: 2rem;
+  border-left: 2px solid var(--color-gray-300);
+}
+
+.timeline__item {
+  position: relative;
+  padding-bottom: var(--space-xl);
+}
+
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline__marker {
+  position: absolute;
+  left: -2.5rem;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-white), 0 0 0 5px var(--color-gray-300);
+}
+
+.timeline__year {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: var(--space-xs);
+}
+
+.timeline__item h3 {
+  margin-bottom: 0.4rem;
+}
+
+/* Personen-Kachel (z. B. Gründer/Geschäftsführer-Portrait) */
+.person-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.person-card img {
+  width: 84px;
+  height: 98px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-card);
+}
+
+.person-card__name {
+  font-weight: 700;
+  color: var(--color-primary);
+  display: block;
+}
+
+.person-card__role {
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+}
+
 /* Zertifikat-Vorschau in der Qualitätspolitik-Sektion */
 .certificate-preview {
   display: block;
