@@ -33,13 +33,28 @@
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="main-nav__list">
           <li><a href="index.html">Startseite</a></li>
-          <li><a href="unternehmen.html" aria-current="page">Unternehmen</a></li>
+          <li class="main-nav__item--dropdown">
+            <a href="unternehmen.html" aria-current="page">Unternehmen</a>
+            <ul class="dropdown">
+              <li><a href="historie.html">Historie</a></li>
+              <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
+              <li><a href="praesentationen.html">Präsentationen</a></li>
+              <li><a href="umwelt.html">Umwelt</a></li>
+              <li><a href="archiv.html">Archiv</a></li>
+            </ul>
+          </li>
           <li><a href="produkte.html">Produkte</a></li>
           <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
           <li><a href="messlabor.html">Messlabor</a></li>
           <li><a href="beratung.html">Beratung</a></li>
           <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
+          <li class="main-nav__item--dropdown">
+            <a href="kontakt.html">Kontakt</a>
+            <ul class="dropdown">
+              <li><a href="kontaktformular.html">Kontaktformular</a></li>
+              <li><a href="anfahrt.html">Anfahrt</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
@@ -116,98 +131,24 @@
       </div>
     </section>
 
-    <!-- ============================= Historie ============================= -->
-    <section class="section section--muted">
-      <div class="container">
-        <div class="content-block">
-          <div class="content-block__title">
-            <span class="eyebrow">Historie</span>
-          </div>
-          <h2>Geschichte und Entwicklung</h2>
-          <p class="lead">
-            Der Gründer der NKL GmbH, Klaus Lorenzen, war seit Mitte der
-            sechziger Jahre auf dem Gebiet der Funkentstörung und EMV tätig –
-            zunächst als Leiter eines EMV-Labors in Stuttgart, dann als
-            Geschäftsführer und Mitinhaber eines Herstellers induktiver
-            Bauelemente.
-          </p>
-
-          <div class="grid grid--2" style="margin-top: var(--space-lg);">
-            <div class="card">
-              <h3>1979 – Gründung in Gaildorf</h3>
-              <p>Klaus Lorenzen macht sich selbständig und gründet die NKL GmbH. Aus kleinen Anfängen wächst die Firma schnell auf über 40 Mitarbeiter.</p>
-            </div>
-            <div class="card">
-              <h3>1991–1994 – Produktion im Ausland</h3>
-              <p>Verlagerung der Hauptproduktion ins Ausland; 1994 entsteht dort ein neues Produktionsgebäude mit 1.200 qm Fläche.</p>
-            </div>
-            <div class="card">
-              <h3>1998 – ISO 9001 &amp; Führungswechsel</h3>
-              <p>Zertifizierung des Qualitätsmanagementsystems nach ISO 9001. Klaus Lorenzen übergibt die Geschäftsführung an seinen Sohn Uwe Lorenzen; Bernd Spatscheck erhält Prokura.</p>
-            </div>
-            <div class="card">
-              <h3>1999–2000 – Neubau Wolpertshausen</h3>
-              <p>Baubeginn des neuen Stammsitzes an der A6 Heilbronn–Nürnberg. Mitte Mai 2000 Bezug des Neubaus mit 1.600 qm Produktions-/Lagerfläche, 400 qm Büro und neuem Messlabor.</p>
-            </div>
-          </div>
-
-          <p style="margin-top: var(--space-lg);">
-            Seit Ende 1997 haben wir einen Handelsvertreter für Nord- und
-            Ostdeutschland, seit Anfang 1999 einen eigenen Außendienst für
-            Süddeutschland und Österreich. Unsere Schweizer Kunden werden
-            seit Ende 2005 durch die Sibalco AG, Basel, betreut. Heute
-            beschäftigt die NKL GmbH in Wolpertshausen ca. 40 Mitarbeiter,
-            die ausländischen Produktionsfirmen ca. 100 weitere.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================= Geschäftsfelder ============================= -->
+    <!-- ============================= Mehr zum Unternehmen ============================= -->
     <section class="section">
       <div class="container">
-        <div class="content-block">
-          <div class="content-block__title">
-            <span class="eyebrow">Geschäftsfelder</span>
+        <div class="grid grid--3">
+          <div class="card">
+            <h3>Historie</h3>
+            <p>Von der Gründung 1979 in Gaildorf bis zum heutigen Stammsitz in Wolpertshausen.</p>
+            <a class="card__link" href="historie.html">Mehr erfahren &rarr;</a>
           </div>
-          <h2>Zwei Standbeine: Bauteile und Dienstleistung</h2>
-          <div class="two-col">
-            <div>
-              <p>
-                Hauptgeschäftsfelder der NKL GmbH sind die Entwicklung und
-                Produktion von Ringkern-Drosseln und Funkentstörfiltern
-                sowie die kompetente Beratung und Betreuung bei
-                EMV-Problemen als Dienstleistung für den EMV-Sektor. Der
-                überwiegende Anteil der Bauteile dient der Funkentstörung
-                bzw. der Erhöhung der Störfestigkeit.
-              </p>
-              <p>
-                Mit der zunehmenden Verbreitung getakteter
-                Stromversorgungen wächst auch der Anteil der
-                Speicherdrosseln und Zündübertrager zur galvanisch
-                getrennten Ansteuerung von Schalttransistoren. Ein
-                weiterer Wachstumsmarkt ist die aktive
-                Leistungsfaktorkorrektur mit PFC-Controllern zur
-                Verringerung der Netzharmonischen.
-              </p>
-            </div>
-            <div>
-              <p>
-                Strom-Spannungs- und Strom-Strom-Wandler sowie
-                kundenspezifische Sonderanfertigungen runden das
-                Lieferprogramm ab – etwa Stabkerndrosseln und die
-                Bewicklung von Spulenkörpern, die nur eingeschränkt
-                automatisiert ist.
-              </p>
-              <p>
-                Parallel zur Produktion nimmt die Bedeutung der
-                EMV-Dienstleistungen zu: Neben Messungen zählt dazu vor
-                allem die entwicklungsbegleitende Beratung. In unserem
-                Labor stehen weniger reine Routinemessungen im
-                Vordergrund als die praxisbezogene Problemlösung – auch
-                in schwierigen Fällen.
-              </p>
-            </div>
+          <div class="card">
+            <h3>Geschäftsfelder</h3>
+            <p>Zwei Standbeine: Entwicklung/Produktion von Bauteilen und EMV-Dienstleistungen.</p>
+            <a class="card__link" href="geschaeftsfelder.html">Mehr erfahren &rarr;</a>
+          </div>
+          <div class="card">
+            <h3>Umwelt</h3>
+            <p>Aktive Umweltpolitik seit 1990 – von Mehrweg-Verpackung bis Nahwärme.</p>
+            <a class="card__link" href="umwelt.html">Mehr erfahren &rarr;</a>
           </div>
         </div>
       </div>
@@ -258,58 +199,6 @@
       </div>
     </section>
 
-    <!-- ============================= Umweltpolitik ============================= -->
-    <section class="section">
-      <div class="container">
-        <div class="content-block">
-          <div class="content-block__title">
-            <span class="eyebrow">Umwelt</span>
-          </div>
-          <h2>Unser Fußabdruck</h2>
-          <div class="two-col">
-            <div>
-              <p>
-                Schon seit 1990 praktizieren wir, zum Schutz von Natur und
-                Umwelt, eine umsichtige Umweltpolitik. So werden ca.
-                <strong>80 %</strong> aller unserer Bauteile in
-                Kunststoffpaletten bzw. -trays verschickt, die im
-                Mehrweg-Pfand-System laufen. Sind diese nach
-                Mehrfachnutzung nicht mehr einsetzbar, geben wir sie
-                sortenrein zur Verwertung an unseren Entsorger.
-              </p>
-              <p>
-                In unseren Kartonagen verzichten wir auf Styropor-Chips –
-                stattdessen hat sich das kompostierbare, recyclebare
-                Füllmaterial „Bio-flo-pak®“ bewährt. Metall-, Papier- und
-                Styroporabfälle werden sortenrein zur Wiederverwertung
-                zurückgegeben, alle übrigen Abfälle entsprechend getrennt
-                entsorgt.
-              </p>
-              <p>
-                Bei der Errichtung unseres Firmensitzes haben wir uns an
-                die Nahwärmeleitung in Wolpertshausen angeschlossen, die
-                über eine Holzhackschnitzel-Heizanlage mit erneuerbaren
-                Energien versorgt wird. Wolpertshausen gilt zudem als
-                kleinste Gemeinde mit der pro Kopf größten Menge an
-                erneuerbaren Energien.
-              </p>
-            </div>
-            <div>
-              <ul class="check-list">
-                <li>Seit 1990 aktive, umsichtige Umweltpolitik</li>
-                <li>ca. 80 % Bauteile im Mehrweg-Pfand-Verpackungssystem</li>
-                <li>Kompostierbares Füllmaterial „Bio-flo-pak®“ statt Styropor</li>
-                <li>Sortenreine Trennung und Rückgabe aller Wertstoffe</li>
-                <li>Anschluss an Nahwärme aus Holzhackschnitzeln</li>
-                <li>Ökodrossel: seit über 10 Jahren sortenrein zerlegbar</li>
-                <li>Einhaltung von RoHS- und REACH-Vorgaben (Erklärungen siehe <a href="downloads.html">Downloads</a>)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- ============================= Footer ============================= -->
@@ -337,7 +226,7 @@
         <div>
           <h3 class="footer-heading">Kontakt</h3>
           <ul class="footer-links">
-            <li><a href="kontakt.html">Kontaktformular</a></li>
+            <li><a href="kontaktformular.html">Kontaktformular</a></li>
             <li><a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a></li>
             <li><a href="tel:+49790497810">+49 (0) 7904 / 97 81-0</a></li>
           </ul>

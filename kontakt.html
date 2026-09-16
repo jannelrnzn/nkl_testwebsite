@@ -33,13 +33,28 @@
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="main-nav__list">
           <li><a href="index.html">Startseite</a></li>
-          <li><a href="unternehmen.html">Unternehmen</a></li>
+          <li class="main-nav__item--dropdown">
+            <a href="unternehmen.html">Unternehmen</a>
+            <ul class="dropdown">
+              <li><a href="historie.html">Historie</a></li>
+              <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
+              <li><a href="praesentationen.html">Präsentationen</a></li>
+              <li><a href="umwelt.html">Umwelt</a></li>
+              <li><a href="archiv.html">Archiv</a></li>
+            </ul>
+          </li>
           <li><a href="produkte.html">Produkte</a></li>
           <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
           <li><a href="messlabor.html">Messlabor</a></li>
           <li><a href="beratung.html">Beratung</a></li>
           <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+          <li class="main-nav__item--dropdown">
+            <a href="kontakt.html" aria-current="page">Kontakt</a>
+            <ul class="dropdown">
+              <li><a href="kontaktformular.html">Kontaktformular</a></li>
+              <li><a href="anfahrt.html">Anfahrt</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
@@ -58,44 +73,24 @@
 
     <section class="section">
       <div class="container">
-        <div class="two-col">
-
-          <!-- ============================= Kontaktformular ============================= -->
-          <div>
-            <div class="card">
-              <h2>Kontaktformular</h2>
-              <p class="lead" style="font-size: 1rem;">
-                Füllen Sie das Formular aus, wir melden uns zeitnah bei Ihnen zurück.
-              </p>
-
-              <form id="contact-form" novalidate>
-                <div class="form-field">
-                  <label for="name">Name *</label>
-                  <input type="text" id="name" name="name" autocomplete="name" required>
-                </div>
-
-                <div class="form-field">
-                  <label for="email">E-Mail *</label>
-                  <input type="email" id="email" name="email" autocomplete="email" required>
-                </div>
-
-                <div class="form-field">
-                  <label for="message">Nachricht *</label>
-                  <textarea id="message" name="message" required></textarea>
-                </div>
-                <p class="form-hint">* Pflichtfelder</p>
-
-                <button type="submit" class="btn btn--primary">Nachricht senden</button>
-
-                <div class="form-status" role="status" aria-live="polite"></div>
-              </form>
-
-              <p style="margin-top: var(--space-md); font-size: 0.8rem; color: var(--color-gray-500);">
-                Hinweis: Dieses Formular ist ein statischer Platzhalter und noch nicht an ein
-                Backend/E-Mail-Postfach angebunden.
-              </p>
-            </div>
+        <div class="grid grid--2">
+          <div class="card">
+            <h3>Kontaktformular</h3>
+            <p>Schreiben Sie uns Ihre Anfrage – wir melden uns zeitnah bei Ihnen zurück.</p>
+            <a class="btn btn--primary" href="kontaktformular.html">Zum Kontaktformular</a>
           </div>
+          <div class="card">
+            <h3>Anfahrt</h3>
+            <p>Unser Stammsitz in Wolpertshausen, direkt an der Autobahn A6 – mit Anfahrtskarte.</p>
+            <a class="btn btn--ghost" href="anfahrt.html">Zur Anfahrt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted">
+      <div class="container">
+        <div class="two-col">
 
           <!-- ============================= Firmenadresse ============================= -->
           <div>
@@ -130,6 +125,17 @@
             </div>
           </div>
 
+          <div>
+            <div class="card">
+              <h3>Weitere Wege zu uns</h3>
+              <ul class="check-list">
+                <li><a href="kontaktformular.html">Kontaktformular</a> ausfüllen</li>
+                <li><a href="anfahrt.html">Anfahrt</a> mit Karte ansehen</li>
+                <li><a href="downloads.html">Downloadbereich</a> für Datenblätter &amp; Erklärungen</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -161,7 +167,7 @@
         <div>
           <h3 class="footer-heading">Kontakt</h3>
           <ul class="footer-links">
-            <li><a href="kontakt.html">Kontaktformular</a></li>
+            <li><a href="kontaktformular.html">Kontaktformular</a></li>
             <li><a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a></li>
             <li><a href="tel:+49790497810">+49 (0) 7904 / 97 81-0</a></li>
           </ul>

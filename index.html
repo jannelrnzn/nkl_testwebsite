@@ -33,13 +33,28 @@
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="main-nav__list">
           <li><a href="index.html" aria-current="page">Startseite</a></li>
-          <li><a href="unternehmen.html">Unternehmen</a></li>
+          <li class="main-nav__item--dropdown">
+            <a href="unternehmen.html">Unternehmen</a>
+            <ul class="dropdown">
+              <li><a href="historie.html">Historie</a></li>
+              <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
+              <li><a href="praesentationen.html">Präsentationen</a></li>
+              <li><a href="umwelt.html">Umwelt</a></li>
+              <li><a href="archiv.html">Archiv</a></li>
+            </ul>
+          </li>
           <li><a href="produkte.html">Produkte</a></li>
           <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
           <li><a href="messlabor.html">Messlabor</a></li>
           <li><a href="beratung.html">Beratung</a></li>
           <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
+          <li class="main-nav__item--dropdown">
+            <a href="kontakt.html">Kontakt</a>
+            <ul class="dropdown">
+              <li><a href="kontaktformular.html">Kontaktformular</a></li>
+              <li><a href="anfahrt.html">Anfahrt</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
@@ -71,7 +86,7 @@
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="produkte.html">Produkte entdecken</a>
-            <a class="btn btn--outline" href="kontakt.html">Kontakt aufnehmen</a>
+            <a class="btn btn--outline" href="kontaktformular.html">Kontakt aufnehmen</a>
           </div>
           <p class="hero__note">
             Foto vom Firmengelände in Wolpertshausen – ein Hintergrundvideo folgt in Kürze.
@@ -471,7 +486,7 @@
         <div>
           <h3 class="footer-heading">Kontakt</h3>
           <ul class="footer-links">
-            <li><a href="kontakt.html">Kontaktformular</a></li>
+            <li><a href="kontaktformular.html">Kontaktformular</a></li>
             <li><a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a></li>
             <li><a href="tel:+49790497810">+49 (0) 7904 / 97 81-0</a></li>
           </ul>
