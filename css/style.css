@@ -631,6 +631,66 @@ p {
   color: #8a5a00;
 }
 
+.badge--available {
+  background-color: #dcefe1;
+  color: var(--color-success);
+}
+
+/* Produktwelt: Kachel mit Produktfoto */
+.product-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  margin-bottom: var(--space-sm);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.product-card__image img {
+  max-height: 80px;
+  width: auto;
+}
+
+/* Musterkästen: kleine Farbchips passend zu den fünf realen Kästen */
+.kit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.kit-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-gray-700);
+}
+
+.kit-chip__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-gray-500);
+  flex-shrink: 0;
+}
+
+/* Zertifikat-Vorschau in der Qualitätspolitik-Sektion */
+.certificate-preview {
+  display: block;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.certificate-preview img {
+  display: block;
+  width: 100%;
+}
+
 /* --------------------------------------------------------------------------
    9. Kontaktformular
    -------------------------------------------------------------------------- */
