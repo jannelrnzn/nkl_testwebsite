@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – NKL GmbH</title>
+  <meta name="description" content="Kontaktieren Sie die NKL GmbH, Birkichstrasse 15, 74549 Wolpertshausen – per Kontaktformular, Telefon +49 (0) 7904 / 97 81-0 oder E-Mail.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+  <!-- ============================= Header ============================= -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH Logo">
+        <span>
+          NKL GmbH
+          <span class="logo__text-sub">EMV-Bauteile</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Navigation öffnen">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+        <ul class="main-nav__list">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="unternehmen.html">Unternehmen</a></li>
+          <li><a href="produkte.html">Produkte</a></li>
+          <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
+          <li><a href="messlabor.html">Messlabor</a></li>
+          <li><a href="beratung.html">Beratung</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <div class="page-header">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Startseite</a> / Kontakt</p>
+        <span class="eyebrow">Kontakt</span>
+        <h1>Sprechen Sie mit uns</h1>
+        <p>Ob Anfrage zu Produkten, EMV-Messung oder Sonderbauformen – wir freuen uns auf Ihre Nachricht.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="two-col">
+
+          <!-- ============================= Kontaktformular ============================= -->
+          <div>
+            <div class="card">
+              <h2>Kontaktformular</h2>
+              <p class="lead" style="font-size: 1rem;">
+                Füllen Sie das Formular aus, wir melden uns zeitnah bei Ihnen zurück.
+              </p>
+
+              <form id="contact-form" novalidate>
+                <div class="form-field">
+                  <label for="name">Name *</label>
+                  <input type="text" id="name" name="name" autocomplete="name" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="email">E-Mail *</label>
+                  <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="message">Nachricht *</label>
+                  <textarea id="message" name="message" required></textarea>
+                </div>
+                <p class="form-hint">* Pflichtfelder</p>
+
+                <button type="submit" class="btn btn--primary">Nachricht senden</button>
+
+                <div class="form-status" role="status" aria-live="polite"></div>
+              </form>
+
+              <p style="margin-top: var(--space-md); font-size: 0.8rem; color: var(--color-gray-500);">
+                Hinweis: Dieses Formular ist ein statischer Platzhalter und noch nicht an ein
+                Backend/E-Mail-Postfach angebunden.
+              </p>
+            </div>
+          </div>
+
+          <!-- ============================= Firmenadresse ============================= -->
+          <div>
+            <div class="contact-info">
+              <h3>NKL GmbH</h3>
+              <address>
+                Birkichstrasse 15<br>
+                D-74549 Wolpertshausen<br>
+                Deutschland
+              </address>
+
+              <h3>Telefon &amp; E-Mail</h3>
+              <p>
+                Telefon: <a href="tel:+49790497810">+49 (0) 7904 / 97 81-0</a><br>
+                E-Mail: <a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a>
+              </p>
+
+              <h3>Ihre Ansprechpartner</h3>
+              <p>
+                Geschäftsführer: Uwe Lorenzen<br>
+                Prokurist: Bernd Spatscheck<br>
+                EMV-Labor-Leiter: Uwe Lorenzen<br>
+                Laborassistent: Ralf Irion<br>
+                Verkaufsinnendienst: <a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a>
+              </p>
+
+              <p style="font-size: 0.8rem; color: var(--color-gray-500); margin-bottom: 0;">
+                Vertrieb Süddeutschland &amp; Österreich sowie Nord-/Ostdeutschland
+                auf Anfrage über <a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a>.
+                Kunden in der Schweiz betreut die Sibalco AG, Basel.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= Footer ============================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH Logo">
+            <span>NKL GmbH</span>
+          </a>
+          <p>Hersteller von Ringkerndrosseln, Entstörfiltern und Übertragern – EMV-Kompetenz aus Wolpertshausen.</p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Unternehmen</h3>
+          <ul class="footer-links">
+            <li><a href="unternehmen.html">Über uns</a></li>
+            <li><a href="messlabor.html">Messlabor</a></li>
+            <li><a href="beratung.html">Beratung</a></li>
+            <li><a href="downloads.html">Downloads</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Kontakt</h3>
+          <ul class="footer-links">
+            <li><a href="kontakt.html">Kontaktformular</a></li>
+            <li><a href="mailto:info@nkl-emv.de">info@nkl-emv.de</a></li>
+            <li><a href="tel:+49790497810">+49 (0) 7904 / 97 81-0</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="year">2026</span> NKL GmbH, Wolpertshausen</span>
+        <span><a href="impressum.html">Impressum</a> · Download-Dokumente und Hintergrundvideo folgen in Kürze</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
