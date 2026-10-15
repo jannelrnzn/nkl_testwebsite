@@ -43,7 +43,9 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Offene Punkte (beim Erledigen hier streichen)
 
-- **Hero-Video** Firmengelände: fehlt noch (Einbau-Vorlage als Kommentar in `index.html`,
+- **Hero-Video** Firmengelände: fehlt noch – Imagevideo + Fotos wurden von der Agentur
+  spicy.de gedreht; Aufteilung der Websitegestaltung wird am 16.10.2026 verhandelt (
+  Einbau-Vorlage als Kommentar in `index.html`,
   Ziel `assets/video/firmengelaende.mp4`). Danach Hinweis „Hintergrundvideo folgt“ entfernen.
 - **Downloads/Präsentationen:** PDFs/PowerPoints fehlen (Kurzbeschreibung, Präsentation,
   Messlabor, Produkte, Zertifikate, REACH-Erklärung …). Wenn da: `href` setzen, Badge und
