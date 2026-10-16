@@ -40,7 +40,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Abstimmung mit dem Fachbereich ausbauen.
 - Social Media: LinkedIn und Instagram – beide Seiten sind sich einig, dass NKL dort
   zumindest erreichbar sein sollte (v. a. für jüngere Generationen). Noch nichts umgesetzt.
-- SPICY informiert Janne bzw. nimmt ihn ins CC bei Themen zu Website, Messe und Medien.
+- SPICY informiert Janne bzw. nimmt Janne ins CC bei Themen zu Website, Messe und Medien.
 - Noch zu klären: Nutzungsrechte an Video/Fotos schriftlich (inkl. Partner/Videograf, Musik),
   Lieferformat (Web-Loop fürs Hero-Video, Originaldateien).
 
@@ -68,7 +68,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Offene Punkte (beim Erledigen hier streichen)
 
-- **Beiträge-Funktion (Wunsch Uwe Lorenzen):** Beiträge verfassen, bearbeiten und auf der
+- **Beiträge-Funktion (Wunsch von Jannes Vater):** Beiträge verfassen, bearbeiten und auf der
   Startseite anzeigen – Janne hat Umsetzung **bis Ende der Woche 19.–23.10.2026** zugesagt,
   danach Treffen mit SPICY. Vorbild: Mitteilungen der TSV-Seite (`js/mitteilungen.js` +
   Generator); offen, ob Bearbeitung ohne GitHub (Admin-Oberfläche/CMS) nötig ist.
