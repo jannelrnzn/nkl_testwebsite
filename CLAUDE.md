@@ -10,7 +10,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 ## Arbeitsweise
 
 - Antworten und Commit-Messages auf Deutsch (Umlaute in Commit-Messages bisher als ae/oe/ue).
-- Kleine, thematisch getrennte Commits.
+- Kleine, thematisch getrennte Commits. Änderungen **immer direkt auf `main` pushen** (Janne, 16.10.2026).
 - Lokale Vorschau: VS Code Live Server (Port 5502) oder `.devserver/serve.ps1` (Port 5500).
 - Kein Cache-Busting (CSS/JS ohne `?v=`) – bei Bedarf wie bei der TSV-Seite nachrüsten.
 - Konzept-Seite über GitHub Pages: https://jannelrnzn.github.io/nkl_testwebsite/index.html
@@ -72,7 +72,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Startseite anzeigen – Janne hat Umsetzung **bis Ende der Woche 19.–23.10.2026** zugesagt,
   danach Treffen mit SPICY. Vorbild: Mitteilungen der TSV-Seite (`js/mitteilungen.js` +
   Generator). **Entschieden (16.10.2026):** Beiträge pflegt nur Janne (per Claude/GitHub,
-  von überall) → keine Admin-Oberfläche/CMS nötig, Daten als JS-Datei im Repo.
+  von überall) → keine Admin-Oberfläche/CMS nötig, Daten als JS-Datei im Repo. Umsetzung
+  möglichst **wie bei der TSV-Seite**: Beiträge auf der Startseite (Teaser + „Weiterlesen“),
+  Archivseite mit allen Beiträgen, Einzelseiten je Beitrag (Generator-Skript, Linkvorschau),
+  Bilder. Erst starten, wenn Janne Bescheid gibt.
 - **Hero-Video** Firmengelände: fehlt noch – Aufnahmen (Imagevideo + Fotos) kommen von
   SPICY (Einbau-Vorlage als Kommentar in `index.html`,
   Ziel `assets/video/firmengelaende.mp4`). Danach Hinweis „Hintergrundvideo folgt“ entfernen.
