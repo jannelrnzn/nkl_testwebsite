@@ -71,7 +71,8 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - **Beiträge-Funktion (Wunsch von Jannes Vater):** Beiträge verfassen, bearbeiten und auf der
   Startseite anzeigen – Janne hat Umsetzung **bis Ende der Woche 19.–23.10.2026** zugesagt,
   danach Treffen mit SPICY. Vorbild: Mitteilungen der TSV-Seite (`js/mitteilungen.js` +
-  Generator); offen, ob Bearbeitung ohne GitHub (Admin-Oberfläche/CMS) nötig ist.
+  Generator). **Entschieden (16.10.2026):** Beiträge pflegt nur Janne (per Claude/GitHub,
+  von überall) → keine Admin-Oberfläche/CMS nötig, Daten als JS-Datei im Repo.
 - **Hero-Video** Firmengelände: fehlt noch – Aufnahmen (Imagevideo + Fotos) kommen von
   SPICY (Einbau-Vorlage als Kommentar in `index.html`,
   Ziel `assets/video/firmengelaende.mp4`). Danach Hinweis „Hintergrundvideo folgt“ entfernen.
