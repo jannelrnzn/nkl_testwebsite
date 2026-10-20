@@ -27,6 +27,11 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - `css/style.css`: eine Datei, CSS-Variablen oben (Farben, Abstände, Schriften).
 - `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr.
 - Bilder flach unter `assets/images/` (teils mit Umlauten im Dateinamen, z. B. `entstörfilter.jpg`).
+- Fotos von SPICY (Shooting 2026) unter `assets/images/fotos/` als `thema-motiv-NNNNN.jpg`
+  (NNNNN = Nummer der Originaldatei DSC0NNNNN.JPG), max. 2400 px, ohne EXIF, Qualität 82.
+  Themen: fertigung, pruefung, messlabor, team, produkte. Noch nicht in Seiten eingebaut.
+- Uploads über die GitHub-Weboberfläche landen im Repo-Root → verschieben, umbenennen,
+  verkleinern, Originale aus dem Repo entfernen.
 
 ## Agentur SPICY / Gespräch 16.10.2026
 
