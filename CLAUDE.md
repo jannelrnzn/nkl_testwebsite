@@ -46,6 +46,15 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - Uploads über die GitHub-Weboberfläche landen im Repo-Root → verschieben, umbenennen,
   verkleinern, Originale aus dem Repo entfernen.
 
+## Hero-Video (Startseite, seit 20.10.2026)
+
+- Clip `spulen02.mp4` von SPICY (6,5 s, Kamerafahrt über Ringkerne) als Schleife vorwärts+rückwärts (13 s,
+  ruckelfrei), ohne Ton: `assets/video/hero-spulen-1080.mp4` (~3,5 MB, PC) und `-720.mp4` (~1,7 MB, bis
+  900 px über `<source media>`), Standbild `hero-spulen-poster.jpg` (auch CSS-Hintergrund, falls Video nicht lädt).
+  ffmpeg: `scale=-2:1080,fps=30,split,reverse,concat`, x264 CRF 27/28, `-an -movflags +faststart`.
+- `.hero--video` mit Farbverlauf (`::before`) über dem Video; Knopf `.hero__pause` unten rechts;
+  `initHeroVideo` (js/main.js) hält bei „Bewegung reduzieren“ an. Originalclip NICHT im Repo.
+
 ## Agentur SPICY / Gespräch 16.10.2026
 
 - Agentur SPICY, Anastassatos GbR (Ute und Andreas Anastassatos), Wasserstraße 9a,
@@ -72,7 +81,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Seiten (Stand 18.09.2026)
 
-- `index.html` (Reihenfolge laut Janne, 20.10.2026): Hero (Foto Firmengelände, Video folgt) · Kennzahlen ·
+- `index.html` (Reihenfolge laut Janne, 20.10.2026): Hero mit Hintergrundvideo · Kennzahlen ·
   Was uns auszeichnet (Foto `fertigung-drosseln-trays-9543.jpg`) · Warum NKL? (3 Karten) · **Aktuelles**
   (3 neueste Beiträge) · Dienstleistungen · Produktwelt · Musterkästen · Qualitätspolitik mit Zertifikat
   **ganz unten**. Hintergründe abwechselnd weiß/grau.
@@ -119,9 +128,6 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   1080p H.264 + 720p für Handy, je max. ca. 5–8 MB, plus Standbild (`poster`), unter
   `assets/video/`. Kompletter Imagefilm nicht selbst hosten → YouTube/Vimeo (dann
   Datenschutz ergänzen) oder später beim eigenen Hoster.
-- **Hero-Video** Firmengelände: fehlt noch – Aufnahmen (Imagevideo + Fotos) kommen von
-  SPICY (Einbau-Vorlage als Kommentar in `index.html`,
-  Ziel `assets/video/firmengelaende.mp4`). Danach Hinweis „Hintergrundvideo folgt“ entfernen.
 - **Downloads/Präsentationen:** PDFs/PowerPoints fehlen (Kurzbeschreibung, Präsentation,
   Messlabor, Produkte, Zertifikate, REACH-Erklärung …). Wenn da: `href` setzen, Badge und
   Meta-Text anpassen (Hinweis als Kommentar in `downloads.html`). Hinweis auf den
@@ -136,4 +142,4 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   anpassen bzw. nach juristischer Prüfung entfernen.
 - **AGB/Gewährleistung:** von der Originalseite übernommen – Aktualität mit NKL abstimmen.
 - Bildgrößen: `NKL_ISO9001_Zertifikat.png` (~500 KB) ggf. verkleinern; `NKL_Logo.JPEG`
-  wird nirgends verwendet (`hero-placeholder.svg` nur in der Video-Vorlage).
+  wird nirgends verwendet; `firmengelaende.jpg` seit dem Hero-Video ungenutzt (evtl. für Anfahrt).

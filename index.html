@@ -63,19 +63,17 @@
 
     <!-- ============================= Hero ============================= -->
     <!--
-      Hero mit echtem Foto vom Firmengelände Wolpertshausen
-      (assets/images/firmengelaende.jpg) als Übergangslösung, bis das
-      Hintergrundvideo eingebunden wird (siehe .hero--placeholder in style.css).
-
-      Spätere Einbindung des Videos z. B. so:
-      <section class="hero">
-        <video class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-placeholder.svg">
-          <source src="assets/video/firmengelaende.mp4" type="video/mp4">
-        </video>
-        <div class="container"> ... </div>
-      </section>
+      Hintergrundvideo (Aufnahmen SPICY 2026): 13-s-Schleife ohne Ton, 1080p für PC, 720p fürs Handy,
+      Standbild als poster. Bei „Bewegung reduzieren“ bleibt nur das Standbild (initHeroVideo).
     -->
-    <section class="hero hero--placeholder">
+    <section class="hero hero--video">
+      <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-spulen-poster.jpg" aria-hidden="true">
+        <source src="assets/video/hero-spulen-720.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source src="assets/video/hero-spulen-1080.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="hero__pause" aria-label="Hintergrundvideo anhalten" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path class="hero__pause-icon" d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+      </button>
       <div class="container">
         <div class="hero__content">
           <span class="eyebrow hero__eyebrow">Hersteller von EMV-Bauteilen · Wolpertshausen</span>
@@ -87,9 +85,6 @@
             <a class="btn btn--primary" href="produkte.html">Produkte entdecken</a>
             <a class="btn btn--outline" href="kontaktformular.html">Kontakt aufnehmen</a>
           </div>
-          <p class="hero__note">
-            Foto vom Firmengelände in Wolpertshausen – ein Hintergrundvideo folgt in Kürze.
-          </p>
         </div>
       </div>
     </section>

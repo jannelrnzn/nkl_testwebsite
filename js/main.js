@@ -6,12 +6,56 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   initMobileNav();
+  initHeroVideo();
   initContactForm();
   updateFooterYear();
   initNews();
   initShare();
   initGalleries();
 });
+
+/**
+ * Startseite: Hintergrundvideo. Bei „Bewegung reduzieren“ (Betriebssystem-Einstellung)
+ * bleibt nur das Standbild stehen; der Knopf unten rechts hält das Video an bzw. startet es.
+ */
+function initHeroVideo() {
+  var video = document.querySelector(".hero__video");
+  var button = document.querySelector(".hero__pause");
+
+  if (!video) {
+    return;
+  }
+
+  var pfadPause = "M7 5h3v14H7zM14 5h3v14h-3z";
+  var pfadPlay = "M8 5v14l11-7z";
+
+  function anzeigen(laeuft) {
+    if (!button) {
+      return;
+    }
+    button.setAttribute("aria-pressed", laeuft ? "false" : "true");
+    button.setAttribute("aria-label", laeuft ? "Hintergrundvideo anhalten" : "Hintergrundvideo abspielen");
+    button.querySelector("path").setAttribute("d", laeuft ? pfadPause : pfadPlay);
+  }
+
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.removeAttribute("autoplay");
+    video.pause();
+    anzeigen(false);
+  }
+
+  if (button) {
+    button.addEventListener("click", function () {
+      if (video.paused) {
+        video.play();
+        anzeigen(true);
+      } else {
+        video.pause();
+        anzeigen(false);
+      }
+    });
+  }
+}
 
 /**
  * Trägt das aktuelle Jahr in den Footer-Copyright-Hinweis ein.
