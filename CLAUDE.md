@@ -76,6 +76,13 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   möglichst **wie bei der TSV-Seite**: Beiträge auf der Startseite (Teaser + „Weiterlesen“),
   Archivseite mit allen Beiträgen, Einzelseiten je Beitrag (Generator-Skript, Linkvorschau),
   Bilder. Erst starten, wenn Janne Bescheid gibt.
+- **Medien von SPICY (erhalten 20.10.2026 per SwissTransfer, ca. 1,8 GB):** Fotos + Videos für
+  Imagefilm, Website und Messe. Originale NICHT ins Repo (GitHub: max. 100 MB/Datei, Pages
+  max. 1 GB) – Janne archiviert sie selbst. Ins Repo nur Auswahl in Web-Größe: Fotos max.
+  2400 px, JPG ca. 200–400 KB, unter `assets/images/`; Hero-Video als Loop 10–20 s ohne Ton,
+  1080p H.264 + 720p für Handy, je max. ca. 5–8 MB, plus Standbild (`poster`), unter
+  `assets/video/`. Kompletter Imagefilm nicht selbst hosten → YouTube/Vimeo (dann
+  Datenschutz ergänzen) oder später beim eigenen Hoster.
 - **Hero-Video** Firmengelände: fehlt noch – Aufnahmen (Imagevideo + Fotos) kommen von
   SPICY (Einbau-Vorlage als Kommentar in `index.html`,
   Ziel `assets/video/firmengelaende.mp4`). Danach Hinweis „Hintergrundvideo folgt“ entfernen.
