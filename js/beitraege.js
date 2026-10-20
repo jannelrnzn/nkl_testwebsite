@@ -35,7 +35,7 @@ var BEITRAEGE = [
     titel: "Besuchen Sie uns auf der electronica 2026",
     text:
       "Vom 10. bis 13. November 2026 ist es wieder so weit: Die electronica, die Weltleitmesse der " +
-      "Elektronik, findet auf dem Messegelände in München statt – und die NKL GmbH ist dabei!" +
+      "Elektronik, findet auf dem Messegelände in München statt – und die NKL GmbH ist wieder dabei!" +
       "</p><p>Sie finden uns in <strong>Halle B6 am Stand 130 (B6.130)</strong>. Wir freuen uns darauf, " +
       "Ihnen unsere Ringkerndrosseln, Entstörfilter und Übertrager vorzustellen und mit Ihnen über Ihre " +
       "EMV-Fragen zu sprechen." +
