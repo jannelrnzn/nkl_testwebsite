@@ -37,9 +37,9 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   (NNNN = Nummer der Originaldatei DSC0NNNN.JPG), max. 2400 px, ohne EXIF, Qualität 82.
   Themen: fertigung, pruefung, messlabor, team, produkte. CSS: `.photo` (figure mit
   figcaption, `.photo--wide` = 16:10) und `.photo-grid` (3 Spalten, Handy 2).
-  Eingebaut (20.10.2026): Startseite (Kernkompetenz-Bild, Abschnitt „Einblicke in unsere
-  Fertigung“ mit 6 Fotos), Messlabor (3 Fotos statt messlabor1–4.jpg), Unternehmen
-  (Team-Foto).
+  Eingebaut (20.10.2026): Startseite (Bild bei „Was uns auszeichnet“), Firmenportrait `unternehmen.html`
+  (Team-Foto + Abschnitt „Einblicke in unsere Fertigung“ mit 6 Fotos – NICHT auf der Startseite,
+  Wunsch Janne), Messlabor (3 Fotos).
 - Personen auf den Fotos: Geschäftsführer **Uwe Lorenzen** (kariertes Hemd, Brille; u. a.
   9590, 9593, 9603, rechts auf 9597) und Produktionsleiter **Zoran Beric** (grünes Polo,
   links auf 9597) – von Janne bestätigt (20.10.2026).
@@ -72,10 +72,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Seiten (Stand 18.09.2026)
 
-- `index.html` (Reihenfolge seit 20.10.2026, Wunsch Janne: Beiträge schnell erreichbar): Hero (Foto
-  Firmengelände, Video folgt) · Kennzahlen · **Aktuelles** (3 neueste Beiträge) · Was uns auszeichnet ·
-  Einblicke in die Fertigung · Dienstleistungen · Produktwelt · Musterkästen · Qualitätspolitik.
-  Hintergründe abwechselnd weiß/grau. Abschnitt „Warum NKL? – Kompetenz in EMV“ (3 Karten) entfernt (doppelt).
+- `index.html` (Reihenfolge laut Janne, 20.10.2026): Hero (Foto Firmengelände, Video folgt) · Kennzahlen ·
+  Was uns auszeichnet (Foto `fertigung-drosseln-trays-9543.jpg`) · Warum NKL? (3 Karten) · **Aktuelles**
+  (3 neueste Beiträge) · Dienstleistungen · Produktwelt · Musterkästen · Qualitätspolitik mit Zertifikat
+  **ganz unten**. Hintergründe abwechselnd weiß/grau.
 - `unternehmen.html` (gekürzt, nur Originaltext), `historie.html` (Zeitleiste, Fotos
   Klaus und Uwe Lorenzen), `geschaeftsfelder.html`, `umwelt.html`, `archiv.html`
   (= „Aktuelles & Archiv“, alle Beiträge, siehe unten).
