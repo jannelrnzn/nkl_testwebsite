@@ -41,6 +41,21 @@ function initMobileNav() {
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 
+  // „Unternehmen“ ist ein Button: per Klick/Tippen Untermenü auf- und zuklappen (Tablets ohne Hover)
+  nav.querySelectorAll(".main-nav__toggle").forEach(function (button) {
+    var item = button.parentElement;
+    button.addEventListener("click", function () {
+      var offen = item.classList.toggle("is-open");
+      button.setAttribute("aria-expanded", offen ? "true" : "false");
+    });
+    document.addEventListener("click", function (event) {
+      if (!item.contains(event.target)) {
+        item.classList.remove("is-open");
+        button.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
   // Menü schließen, wenn ein Link angeklickt wird (z. B. auf dem Handy)
   nav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {

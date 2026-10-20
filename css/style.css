@@ -289,6 +289,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-md);
   min-height: 76px;
 }
 
@@ -347,6 +348,10 @@ p {
   gap: 1.2rem;
 }
 
+@media (max-width: 1360px) {
+  .main-nav__list { gap: 0.9rem; }
+}
+
 .main-nav__list a {
   display: inline-block;
   color: var(--color-gray-900);
@@ -360,6 +365,33 @@ p {
 /* Anker-Ziele (z. B. #beratung) nicht unter der fixierten Kopfzeile verstecken */
 [id] {
   scroll-margin-top: 96px;
+}
+
+/* „Unternehmen“ ist kein Link mehr, sondern öffnet nur das Untermenü – sieht aus wie die Links */
+.main-nav__toggle {
+  display: inline-block;
+  font: inherit;
+  color: var(--color-gray-900);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.1rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.main-nav__toggle:hover,
+.main-nav__toggle:focus-visible {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.main-nav__toggle.is-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  font-weight: 700;
 }
 
 .main-nav__list a:hover,
@@ -380,7 +412,8 @@ p {
   position: relative;
 }
 
-.main-nav__item--dropdown > a::after {
+.main-nav__item--dropdown > a::after,
+.main-nav__toggle::after {
   content: "";
   display: inline-block;
   width: 6px;
@@ -409,7 +442,8 @@ p {
 }
 
 .main-nav__item--dropdown:hover > .dropdown,
-.main-nav__item--dropdown:focus-within > .dropdown {
+.main-nav__item--dropdown:focus-within > .dropdown,
+.main-nav__item--dropdown.is-open > .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -1309,7 +1343,8 @@ main:has(> .section--muted:last-child) + .site-footer {
   }
 }
 
-@media (max-width: 720px) {
+/* Handy-Menü (☰) schon unter 1200 px – die Kopfzeile mit 9 Menüpunkten passt sonst nicht in eine Zeile */
+@media (max-width: 1199px) {
   .nav-toggle {
     display: block;
   }
@@ -1337,14 +1372,18 @@ main:has(> .section--muted:last-child) + .site-footer {
     padding: var(--space-sm) var(--space-md) var(--space-md);
   }
 
-  .main-nav__list a {
+  .main-nav__list a,
+  .main-nav__toggle {
     display: block;
+    width: 100%;
+    text-align: left;
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--color-gray-100);
   }
 
   /* Dropdowns im mobilen Menü immer sichtbar und eingerückt statt Hover-Overlay */
-  .main-nav__item--dropdown > a::after {
+  .main-nav__item--dropdown > a::after,
+  .main-nav__toggle::after {
     float: right;
     margin-top: 0.4rem;
   }
@@ -1378,7 +1417,9 @@ main:has(> .section--muted:last-child) + .site-footer {
   .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+}
 
+@media (max-width: 720px) {
   .grid--2,
   .grid--3,
   .grid--4 {

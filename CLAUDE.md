@@ -22,9 +22,12 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   auf weißem Feld (Logo-Blau auf Anthrazit sonst unlesbar). Endet eine Seite mit `.section--muted`, kein Abstand vor dem Footer.
 - Jede Seite enthält Kopf (Logo, Navigation) und Fuß komplett im HTML – bei Menü- oder
   Footer-Änderungen **alle** `*.html` anpassen.
-- Navigation: Startseite · Unternehmen ▾ (Historie, Geschäftsfelder, Präsentationen,
-  Umwelt, Aktuelles → `archiv.html`) · Produkte · Anwendungsbereiche · Messlabor · Beratung · Downloads ·
-  Kontakt ▾ (Kontaktformular, Anfahrt). Aktive Seite mit `aria-current="page"`.
+- Navigation: Startseite · Unternehmen ▾ (Firmenportrait = `unternehmen.html`, Historie, Geschäftsfelder,
+  Präsentationen, Umwelt) · Produkte · Anwendungsbereiche · Messlabor · Beratung · Downloads ·
+  Archiv (`archiv.html`, Beiträge) · Kontakt ▾ (Kontaktformular, Anfahrt). Aktive Seite mit `aria-current="page"`.
+- „Unternehmen“ ist **kein Link**, sondern `<button class="main-nav__toggle">` (Klick klappt das Untermenü auf,
+  `initMobileNav`); auf den fünf Unterseiten trägt er `is-active`. Handy-Menü (☰) schon unter 1200 px
+  (`@media (max-width: 1199px)`), sonst passen die 9 Punkte nicht in eine Zeile.
 - Footer-Leiste: Impressum · AGB · Datenschutz · Gesetzliche Gewährleistung; Jahr per JS (`#year`).
 - `css/style.css`: eine Datei, CSS-Variablen oben (Farben, Abstände, Schriften).
 - `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr, Beiträge
