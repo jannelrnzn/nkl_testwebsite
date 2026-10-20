@@ -138,8 +138,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - **Datenschutz:** von der Originalseite übernommen, beschreibt reCAPTCHA und Webanalyse,
   die hier nicht eingesetzt werden. Fehlt: Google Maps (Anfahrt), Hosting, Kontaktformular.
   Vor Go-live anpassen und prüfen lassen.
-- **Impressum:** Hinweis am Ende („Datenschutzerklärung fehlt noch“) ist veraltet –
-  anpassen bzw. nach juristischer Prüfung entfernen.
+- **Impressum** (20.10.2026): „Gestaltung & Umsetzung: Janne Lorenzen“ ergänzt (freiwillig, ohne Anschrift);
+  „Redaktionell verantwortlich“ bleibt Uwe Lorenzen (Janne NICHT als Verantwortlicher). OS-Plattform-Link
+  entfernt (EU-Plattform seit 20.07.2025 eingestellt), Satz zur Verbraucherschlichtung bleibt; veralteter
+  Hinweis am Ende entfernt. Vor Go-live fachlich prüfen lassen.
 - **AGB/Gewährleistung:** von der Originalseite übernommen – Aktualität mit NKL abstimmen.
 - Bildgrößen: `NKL_ISO9001_Zertifikat.png` (~500 KB) ggf. verkleinern; `NKL_Logo.JPEG`
   wird nirgends verwendet; `firmengelaende.jpg` seit dem Hero-Video ungenutzt (evtl. für Anfahrt).
