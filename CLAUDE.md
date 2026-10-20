@@ -96,9 +96,14 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Jahr gruppiert (Jahr aus der `id`). Teaser automatisch ca. 160 Zeichen (`NEWS_TEASER_LENGTH`).
 - `SITE_URL` in `tools/beitraege.js` = https://jannelrnzn.github.io/nkl_testwebsite/ → nach dem Umzug auf
   die eigene Domain umstellen und Skript neu ausführen. Standardbild Linkvorschau: Ringkerndrossel-Foto.
-- Bestand: REACH 2026 (Feb. 2026), Downloads (Okt. 2025), ISO-Rezertifizierung (Sept. 2025, mit
-  Zertifikat); alle Meldungen 2016–2022 von nkl-emv.de/unternehmen/archiv als `archiv: true` (Texte
-  übernommen, kleine Rechtschreibkorrekturen, ohne Bilder).
+- Bestand: electronica 2026 (20.10.2026, Halle B6 Stand 130, 10.–13.11.2026; Bild = offizielles
+  Logo von electronica.de/Messebilder & Logos + Messedaten, Hallenplan B6 mit rot markiertem Stand, ohne
+  Werbebanner, Quelle exhibitors.electronica.de, © jl.medien GmbH), REACH 2026, Downloads (Okt. 2025),
+  ISO-Rezertifizierung (Sept. 2025, mit Zertifikat); Meldungen 2016–2022 von nkl-emv.de/unternehmen/archiv
+  als `archiv: true` – **ohne Weihnachts-/Neujahrsgrüße** (Janne, 20.10.2026), Texte übernommen, ohne Bilder.
+- Bilder für Beiträge unter `assets/images/beitraege/`, Titelbild am besten 1200 × 630 (Format der
+  Linkvorschau; Startseiten-Karten zeigen es unbeschnitten). Ein einzelnes weiteres Bild erscheint auf der
+  Einzelseite in voller Breite.
 
 ## Offene Punkte (beim Erledigen hier streichen)
 

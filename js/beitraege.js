@@ -30,6 +30,26 @@
 
 var BEITRAEGE = [
   {
+    id: "2026-10-20-electronica-2026",
+    datum: "20. Oktober 2026",
+    titel: "Besuchen Sie uns auf der electronica 2026",
+    text:
+      "Vom 10. bis 13. November 2026 ist es wieder so weit: Die electronica, die Weltleitmesse der " +
+      "Elektronik, findet auf dem Messegelände in München statt – und die NKL GmbH ist dabei!" +
+      "</p><p>Sie finden uns in <strong>Halle B6 am Stand 130 (B6.130)</strong>. Wir freuen uns darauf, " +
+      "Ihnen unsere Ringkerndrosseln, Entstörfilter und Übertrager vorzustellen und mit Ihnen über Ihre " +
+      "EMV-Fragen zu sprechen." +
+      "</p><p>Sie möchten vorab einen Termin am Stand vereinbaren? Schreiben Sie uns gerne über das " +
+      "<a href=\"kontaktformular.html\">Kontaktformular</a>." +
+      "</p><p><small>Hallenplan: <a href=\"https://exhibitors.electronica.de/exhibitor-portal/2026/hallplans/hallplan/?lid=b6\" " +
+      "target=\"_blank\" rel=\"noopener\">electronica.de – Hallenplan B6</a> (© jl.medien GmbH). " +
+      "Logo: © Messe München GmbH.</small>",
+    bilder: [
+      { datei: "assets/images/beitraege/electronica-2026.jpg", beschreibung: "electronica 2026 – 10. bis 13. November, Messe München" },
+      { datei: "assets/images/beitraege/electronica-2026-hallenplan-b6.jpg", beschreibung: "Hallenplan B6 – unser Stand B6.130 ist rot markiert" }
+    ]
+  },
+  {
     id: "2026-02-reach-2026",
     datum: "Februar 2026",
     titel: "REACH 2026",
@@ -69,17 +89,6 @@ var BEITRAEGE = [
   // ---------------- Archiv (von der bisherigen Website übernommen) ----------------
 
   {
-    id: "2022-12-frohe-feiertage",
-    datum: "Dezember 2022",
-    titel: "Frohe Feiertage",
-    archiv: true,
-    text:
-      "Die NKL GmbH wünscht Ihnen und Ihrer Familie frohe Weihnachten, erholsame Feiertage und einen " +
-      "guten Start ins neue Jahr! Wir bedanken uns für die gute Zusammenarbeit." +
-      "</p><p><strong>Bitte beachten Sie:</strong> Unser Unternehmen (Wareneingang) ist nur bis Mittwoch, " +
-      "21. Dezember 2022 geöffnet und wieder ab dem 02. Januar 2023."
-  },
-  {
     id: "2022-10-electronica-2022",
     datum: "Herbst 2022",
     titel: "electronica 2022",
@@ -90,49 +99,6 @@ var BEITRAEGE = [
       "</p><p>Wir würden uns freuen, wenn Sie in Halle A5 an unserem Stand A5.127 vorbeischauen."
   },
   {
-    id: "2022-01-wuensche-neues-jahr",
-    datum: "Januar 2022",
-    titel: "Wünsche für das neue Jahr",
-    archiv: true,
-    text:
-      "Wir hoffen, Sie hatten eine gute und erholsame Zeit zwischen den Jahren und einen guten Start in " +
-      "das neue Jahr." +
-      "</p><p>Wir haben wieder durchgestartet und versuchen trotz Coronarestriktionen, Lieferengpässen " +
-      "und ähnlichen Schwierigkeiten unsere Kunden zufriedenstellend mit unseren Bauteilen zu beliefern."
-  },
-  {
-    id: "2021-12-frohe-weihnachten",
-    datum: "Dezember 2021",
-    titel: "Frohe Weihnachten",
-    archiv: true,
-    text:
-      "Auch wenn in der Welt um uns herum so vieles im Argen liegt, bleibt Weihnachten doch ein Fest, an " +
-      "dem Freude, Besinnlichkeit und Frieden im Vordergrund stehen. Deshalb wünschen wir Ihnen viel " +
-      "Freude, besinnliche und friedliche Feiertage." +
-      "</p><p><strong>Bitte beachten Sie:</strong> Unser Unternehmen (Wareneingang) ist nur bis Dienstag, " +
-      "21. Dezember 2021 geöffnet und wieder ab dem 03. Januar 2022."
-  },
-  {
-    id: "2021-01-wuensche-2021",
-    datum: "Januar 2021",
-    titel: "Wünsche für das Jahr 2021",
-    archiv: true,
-    text:
-      "Wir, die NKL GmbH, wünschen Ihnen und uns ein gutes und besseres Jahr. Wir hoffen, dass sich die " +
-      "Lage bald entspannt und die Arbeits- und Lebensbedingungen wieder wie vor der Krise werden."
-  },
-  {
-    id: "2020-12-schoene-feiertage",
-    datum: "Dezember 2020",
-    titel: "Schöne Feiertage",
-    archiv: true,
-    text:
-      "Die NKL GmbH bedankt sich für die gute Zusammenarbeit und wünscht Ihnen und Ihrer Familie frohe " +
-      "Weihnachten, erholsame Feiertage und einen guten Start ins neue Jahr!" +
-      "</p><p><strong>Bitte beachten Sie:</strong> Unser Unternehmen (Wareneingang) ist nur bis Dienstag, " +
-      "22. Dezember 2020 geöffnet und wieder ab dem 07. Januar 2021."
-  },
-  {
     id: "2020-03-aktuelle-situation",
     datum: "März 2020",
     titel: "Aktuelle Situation",
@@ -141,25 +107,6 @@ var BEITRAEGE = [
       "Wegen der aktuellen Gesundheitslage wurde die bevorstehende Gewerbeschau in Wolpertshausen " +
       "abgesagt. Bis jetzt laufen die Geschäftstätigkeiten bei NKL wie gewohnt." +
       "</p><p>Wir wünschen unseren Kunden Gesundheit und einen weiteren undramatischen Geschäftsverlauf."
-  },
-  {
-    id: "2020-01-neujahrsgruss",
-    datum: "Januar 2020",
-    titel: "Neujahrsgruß",
-    archiv: true,
-    text:
-      "Wir bedanken uns recht herzlich für die erfolgreiche Zusammenarbeit im vergangenen Jahr und " +
-      "wünschen Ihnen einen guten und erfolgreichen Start in das neue Jahr 2020."
-  },
-  {
-    id: "2019-12-frohe-feiertage",
-    datum: "Dezember 2019",
-    titel: "Frohe Feiertage",
-    archiv: true,
-    text:
-      "Frohe und erholsame Weihnachten und ein gutes neues Jahr 2020 wünscht Ihnen die NKL GmbH." +
-      "</p><p><strong>Bitte beachten Sie:</strong> Unser Unternehmen (Wareneingang) ist nur bis Donnerstag, " +
-      "19. Dezember 2019 geöffnet und wieder ab dem 07. Januar 2020."
   },
   {
     id: "2019-08-iso-9001-rezertifizierung",
@@ -180,27 +127,6 @@ var BEITRAEGE = [
       "im Gange. Die Belegschaft darf auf den bevorstehenden Event gespannt sein."
   },
   {
-    id: "2019-01-wuensche-2019",
-    datum: "Januar 2019",
-    titel: "Wünsche für das neue Jahr 2019",
-    archiv: true,
-    text:
-      "Im Namen des gesamten NKL-Teams wünschen wir Ihnen einen guten Start in das neue Jahr und " +
-      "Gesundheit, Glück und Erfolg." +
-      "</p><p><em>„Nicht die Jahre in unserem Leben zählen, sondern das Leben in unseren Jahren.“</em> – Adlai Stevenson"
-  },
-  {
-    id: "2018-12-frohe-weihnachten",
-    datum: "Dezember 2018",
-    titel: "Frohe Weihnachten und schöne Feiertage",
-    archiv: true,
-    text:
-      "Im Namen des gesamten NKL-Teams wünschen wir Ihnen erholsame Weihnachtsfeiertage und für das neue " +
-      "Jahr Gesundheit, Glück und Erfolg." +
-      "</p><p><strong>Bitte beachten Sie:</strong> Unser Wareneingang und die Firma sind ab Donnerstag, " +
-      "20. Dezember 2018 geschlossen. Ab Mittwoch, 02. Januar 2019 sind wir wieder für Sie erreichbar."
-  },
-  {
     id: "2018-11-electronica-2018-danke",
     datum: "November 2018",
     titel: "electronica 2018",
@@ -217,25 +143,6 @@ var BEITRAEGE = [
       "Sie findet vom 13. bis 16. November in München statt." +
       "</p><p>Falls Sie dort als Aussteller oder Besucher sind, würden wir uns freuen, wenn Sie an unserem " +
       "Stand A6 / 431 vorbeischauen."
-  },
-  {
-    id: "2018-01-neujahrsgruesse",
-    datum: "Januar 2018",
-    titel: "Neujahrsgrüße",
-    archiv: true,
-    text:
-      "<em>„Wenn das alte Jahr erfolgreich war, dann freue dich aufs Neue. Und war es schlecht, ja, dann " +
-      "erst recht.“</em> – Albert Einstein" +
-      "</p><p>In diesem Sinne wünschen wir unseren Kunden ein gutes und erfolgreiches neues Jahr 2018."
-  },
-  {
-    id: "2017-12-schoene-feiertage",
-    datum: "Dezember 2017",
-    titel: "Erholsame und schöne Feiertage",
-    archiv: true,
-    text:
-      "Das NKL-Team wünscht Ihnen und Ihrer Familie fröhliche Feiertage mit vielen großen und kleinen " +
-      "Freuden, erholsame Stunden der Gemütlichkeit sowie einen gesunden und erfolgreichen Start in das neue Jahr."
   },
   {
     id: "2017-07-leitfaden-din-en-60940",
@@ -258,18 +165,6 @@ var BEITRAEGE = [
       "unsere Außenlampen durch LED-Strahler ersetzt. Dadurch reduzieren wir unseren Verbrauch an " +
       "elektrischer Energie um ungefähr weitere 8 % auf insgesamt ca. 28 %." +
       "</p><p>Mehr zu unserer <a href=\"umwelt.html\">Umweltpolitik</a>."
-  },
-  {
-    id: "2016-12-frohe-feiertage",
-    datum: "Dezember 2016",
-    titel: "Frohe und schöne Feiertage",
-    archiv: true,
-    text:
-      "Es ist wieder so weit … Wir wünschen unseren Kunden eine erholsame Weihnachtszeit und ein gutes " +
-      "neues Jahr 2017 und bedanken uns für die Zusammenarbeit." +
-      "</p><p><strong>Bitte beachten Sie:</strong> Unser Unternehmen (Wareneingang) ist nur bis Donnerstag, " +
-      "22. Dezember 2016 geöffnet und dann wieder ab dem 02. Januar 2017. Bitte beachten Sie auch den " +
-      "lokalen Feiertag am 06.01.2017."
   },
   {
     id: "2016-08-messe-im-november",

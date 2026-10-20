@@ -1117,6 +1117,9 @@ main:has(> .section--muted:last-child) + .site-footer {
 
 .news-list--grid .news-item__thumb { order: -1; }
 
+/* Format der Linkvorschau (1200 × 630), damit Beitragsbilder nicht beschnitten werden */
+.news-list--grid .news-item__thumb img { aspect-ratio: 1.91 / 1; }
+
 .news-list__more {
   margin-top: var(--space-lg);
   text-align: center;
@@ -1164,6 +1167,11 @@ main:has(> .section--muted:last-child) + .site-footer {
 }
 
 .news-detail__images figure { margin: 0; }
+
+/* Nur ein weiteres Bild (z. B. Hallenplan): in voller Textbreite und unbeschnitten */
+.news-detail__images:has(> figure:only-child) { grid-template-columns: 1fr; }
+
+.news-detail__images figure:only-child img { aspect-ratio: auto; object-fit: contain; }
 
 .news-detail__images img {
   width: 100%;
