@@ -33,10 +33,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   figcaption, `.photo--wide` = 16:10) und `.photo-grid` (3 Spalten, Handy 2).
   Eingebaut (20.10.2026): Startseite (Kernkompetenz-Bild, Abschnitt „Einblicke in unsere
   Fertigung“ mit 6 Fotos), Messlabor (3 Fotos statt messlabor1–4.jpg), Unternehmen
-  (Team-Foto). Alte Bilder `messlabor1–4.jpg`, `Ringkerndrossel_groß_startseite.jpg` ungenutzt.
+  (Team-Foto).
 - Personen auf den Fotos: Geschäftsführer **Uwe Lorenzen** (kariertes Hemd, Brille; u. a.
   9590, 9593, 9603, rechts auf 9597) und Produktionsleiter **Zoran Beric** (grünes Polo,
-  links auf 9597) – Zuordnung von Claude anhand der Fotos, von Janne zu bestätigen.
+  links auf 9597) – von Janne bestätigt (20.10.2026).
 - Uploads über die GitHub-Weboberfläche landen im Repo-Root → verschieben, umbenennen,
   verkleinern, Originale aus dem Repo entfernen.
 
