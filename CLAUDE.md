@@ -18,6 +18,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Aufbau
 
+- Kopf: nur Logo-Bild + Unterzeile `.logo__tagline` „EMV-Bauteile“ (kein Text „NKL GmbH“ – steht schon im Logo); Fuß: nur Logo.
 - Jede Seite enthält Kopf (Logo, Navigation) und Fuß komplett im HTML – bei Menü- oder
   Footer-Änderungen **alle** `*.html` anpassen.
 - Navigation: Startseite · Unternehmen ▾ (Historie, Geschäftsfelder, Präsentationen,
