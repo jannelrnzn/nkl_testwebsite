@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archiv – NKL GmbH</title>
-  <meta name="description" content="Archiv der NKL GmbH: frühere Meldungen und Neuigkeiten.">
+  <title>Aktuelles &amp; Archiv – NKL GmbH</title>
+  <meta name="description" content="Aktuelle Beiträge und frühere Meldungen der NKL GmbH aus Wolpertshausen – Messen, Zertifizierungen, REACH und mehr.">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/beitraege.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -37,7 +38,7 @@
               <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
               <li><a href="praesentationen.html">Präsentationen</a></li>
               <li><a href="umwelt.html">Umwelt</a></li>
-              <li><a href="archiv.html" aria-current="page">Archiv</a></li>
+              <li><a href="archiv.html" aria-current="page">Aktuelles</a></li>
             </ul>
           </li>
           <li><a href="produkte.html">Produkte</a></li>
@@ -61,34 +62,17 @@
 
     <div class="page-header">
       <div class="container">
-        <p class="breadcrumb"><a href="index.html">Startseite</a> / <a href="unternehmen.html">Unternehmen</a> / Archiv</p>
-        <span class="eyebrow">Archiv</span>
-        <h1>Frühere Meldungen</h1>
+        <p class="breadcrumb"><a href="index.html">Startseite</a> / <a href="unternehmen.html">Unternehmen</a> / Aktuelles &amp; Archiv</p>
+        <span class="eyebrow">Aktuelles</span>
+        <h1>Aktuelles &amp; Archiv</h1>
+        <p>Alle Beiträge der NKL GmbH – neueste zuerst.</p>
       </div>
     </div>
 
     <section class="section">
       <div class="container">
-        <div class="download-list">
-          <div class="download-item">
-            <div class="download-item__info">
-              <span class="download-item__meta">Herbst 2022</span>
-              <h3>electronica 2022</h3>
-              <p>Die electronica 2022 fand vom 15. bis 18. November in München statt – wir waren mit einem Stand in Halle A5 vertreten.</p>
-            </div>
-          </div>
-          <div class="download-item">
-            <div class="download-item__info">
-              <span class="download-item__meta">August 2019</span>
-              <h3>Erfolgreiche ISO-9001-Rezertifizierung</h3>
-              <p>Das konstant hohe Niveau unseres Qualitätsmanagementsystems nach ISO 9001:2015 wurde durch eine erfolgreiche Rezertifizierung erneut bestätigt.</p>
-            </div>
-          </div>
-        </div>
-
-        <p style="margin-top: var(--space-lg); color: var(--color-gray-500); font-size: 0.9rem;">
-          Weitere ältere Meldungen (u. a. Jahresgrüße und Hinweise zu Betriebsferien) folgen in Kürze.
-        </p>
+        <!-- Beiträge kommen aus js/beitraege.js, nach Jahren gruppiert -->
+        <div class="news-list" data-news="archive"></div>
       </div>
     </section>
 

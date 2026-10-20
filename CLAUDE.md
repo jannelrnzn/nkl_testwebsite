@@ -18,15 +18,17 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Aufbau
 
-- Kopf: nur Logo-Bild + Unterzeile `.logo__tagline` „EMV-Bauteile“ (kein Text „NKL GmbH“ – steht schon im Logo); Fuß: nur Logo.
+- Kopf: nur Logo-Bild + Unterzeile `.logo__tagline` „EMV-Bauteile“ (kein Text „NKL GmbH“ – steht schon im Logo); Fuß: nur Logo
+  auf weißem Feld (Logo-Blau auf Anthrazit sonst unlesbar). Endet eine Seite mit `.section--muted`, kein Abstand vor dem Footer.
 - Jede Seite enthält Kopf (Logo, Navigation) und Fuß komplett im HTML – bei Menü- oder
   Footer-Änderungen **alle** `*.html` anpassen.
 - Navigation: Startseite · Unternehmen ▾ (Historie, Geschäftsfelder, Präsentationen,
-  Umwelt, Archiv) · Produkte · Anwendungsbereiche · Messlabor · Beratung · Downloads ·
+  Umwelt, Aktuelles → `archiv.html`) · Produkte · Anwendungsbereiche · Messlabor · Beratung · Downloads ·
   Kontakt ▾ (Kontaktformular, Anfahrt). Aktive Seite mit `aria-current="page"`.
 - Footer-Leiste: Impressum · AGB · Datenschutz · Gesetzliche Gewährleistung; Jahr per JS (`#year`).
 - `css/style.css`: eine Datei, CSS-Variablen oben (Farben, Abstände, Schriften).
-- `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr.
+- `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr, Beiträge
+  (`initNews`), Link teilen (`initShare`), Großansicht (`initGalleries`, alles mit `[data-gallery]`).
 - Bilder flach unter `assets/images/` (teils mit Umlauten im Dateinamen, z. B. `entstörfilter.jpg`).
 - Fotos von SPICY (Shooting 2026) unter `assets/images/fotos/` als `thema-motiv-NNNN.jpg`
   (NNNN = Nummer der Originaldatei DSC0NNNN.JPG), max. 2400 px, ohne EXIF, Qualität 82.
@@ -68,10 +70,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 ## Seiten (Stand 18.09.2026)
 
 - `index.html`: Hero mit Foto Firmengelände (Video folgt), Kennzahlen, Dienstleistungen,
-  Produktwelt mit Bildern, Kompetenz, Qualitätspolitik, Aktuelles (ISO 9001, Downloads, REACH 2026).
+  Produktwelt mit Bildern, Kompetenz, Qualitätspolitik, Aktuelles (3 neueste Beiträge).
 - `unternehmen.html` (gekürzt, nur Originaltext), `historie.html` (Zeitleiste, Fotos
   Klaus und Uwe Lorenzen), `geschaeftsfelder.html`, `umwelt.html`, `archiv.html`
-  (electronica 2022, ISO-Rezertifizierung 2019).
+  (= „Aktuelles & Archiv“, alle Beiträge, siehe unten).
 - `produkte.html` (Karten mit „Anfrage stellen“ → Kontaktformular),
   `anwendungsbereiche.html` (Schaltplan + Typenbezeichnung; Musterkästen entfernt),
   `messlabor.html` (Originaltext + 4 Laborfotos), `beratung.html`.
@@ -79,16 +81,27 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - `kontakt.html`, `kontaktformular.html`, `anfahrt.html` (Google-Maps-iframe, direkt eingebunden).
 - Rechtliches: `impressum.html`, `agb.html`, `datenschutz.html`, `gewaehrleistung.html`.
 
+## Beiträge (Aktuelles) – wie Mitteilungen der TSV-Seite (umgesetzt 20.10.2026)
+
+- Pflege nur durch Janne (über Claude/GitHub). Inhalt nur in `js/beitraege.js` (Liste `BEITRAEGE`,
+  neueste zuerst). Neuer Beitrag = neuer Eintrag ganz oben: `id` (`JJJJ-MM-TT-stichwort`, ohne Tag
+  `JJJJ-MM-stichwort`; nie mehr ändern), `datum` (Anzeige, z. B. „Februar 2026“), `titel`, `text`
+  (HTML, Absätze `</p><p>`, Links wie von der Startseite aus); optional `teaser`, `komplett: true`,
+  `bilder` (`assets/images/beitraege/` oder `assets/images/fotos/`), `archiv: true`.
+- **Danach immer `node tools/beitraege.js`** → erzeugt `beitraege/<id>.html` (Kopf/Menü/Fuß aus
+  `archiv.html`, Pfade `../`, Linkvorschau für LinkedIn/WhatsApp, Neuer/Älter, „Link kopieren“), löscht
+  veraltete. Dateien in `beitraege/` nie von Hand bearbeiten. Auch nach Menü-/Footer-Änderungen ausführen.
+- Startseite: Abschnitt „Aktuelles“ (`data-news="latest"`) = 3 neueste ohne `archiv: true`, als Karten
+  nebeneinander, Button „Alle Beiträge & Archiv“. `archiv.html` (`data-news="archive"`) = alle, nach
+  Jahr gruppiert (Jahr aus der `id`). Teaser automatisch ca. 160 Zeichen (`NEWS_TEASER_LENGTH`).
+- `SITE_URL` in `tools/beitraege.js` = https://jannelrnzn.github.io/nkl_testwebsite/ → nach dem Umzug auf
+  die eigene Domain umstellen und Skript neu ausführen. Standardbild Linkvorschau: Ringkerndrossel-Foto.
+- Bestand: REACH 2026 (Feb. 2026), Downloads (Okt. 2025), ISO-Rezertifizierung (Sept. 2025, mit
+  Zertifikat); alle Meldungen 2016–2022 von nkl-emv.de/unternehmen/archiv als `archiv: true` (Texte
+  übernommen, kleine Rechtschreibkorrekturen, ohne Bilder).
+
 ## Offene Punkte (beim Erledigen hier streichen)
 
-- **Beiträge-Funktion (Wunsch von Jannes Vater):** Beiträge verfassen, bearbeiten und auf der
-  Startseite anzeigen – Janne hat Umsetzung **bis Ende der Woche 19.–23.10.2026** zugesagt,
-  danach Treffen mit SPICY. Vorbild: Mitteilungen der TSV-Seite (`js/mitteilungen.js` +
-  Generator). **Entschieden (16.10.2026):** Beiträge pflegt nur Janne (per Claude/GitHub,
-  von überall) → keine Admin-Oberfläche/CMS nötig, Daten als JS-Datei im Repo. Umsetzung
-  möglichst **wie bei der TSV-Seite**: Beiträge auf der Startseite (Teaser + „Weiterlesen“),
-  Archivseite mit allen Beiträgen, Einzelseiten je Beitrag (Generator-Skript, Linkvorschau),
-  Bilder. Erst starten, wenn Janne Bescheid gibt.
 - **Medien von SPICY (erhalten 20.10.2026 per SwissTransfer, ca. 1,8 GB):** Fotos + Videos für
   Imagefilm, Website und Messe. Originale NICHT ins Repo (GitHub: max. 100 MB/Datei, Pages
   max. 1 GB) – Janne archiviert sie selbst. Ins Repo nur Auswahl in Web-Größe: Fotos max.
@@ -103,7 +116,6 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Messlabor, Produkte, Zertifikate, REACH-Erklärung …). Wenn da: `href` setzen, Badge und
   Meta-Text anpassen (Hinweis als Kommentar in `downloads.html`). Hinweis auf den
   PowerPoint-Viewer ggf. streichen (von Microsoft eingestellt).
-- **Archiv:** weitere ältere Meldungen (Jahresgrüße, Betriebsferien) „folgen in Kürze“.
 - **Kontaktformular:** nicht angebunden (kein Backend). Weg klären (z. B. PHP beim Hoster
   wie `kontakt.php` bei der TSV-Seite), danach Platzhalter-Hinweise in
   `kontaktformular.html` und `js/main.js` entfernen.

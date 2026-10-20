@@ -1,12 +1,16 @@
 /**
  * NKL GmbH – gemeinsames Frontend-Skript für alle Seiten.
- * Enthält: mobiles Navigations-Menü, Kontaktformular-Handling.
+ * Enthält: mobiles Navigations-Menü, Kontaktformular-Handling, Beiträge
+ * (Startseite/Archiv), Link teilen und Bild-Großansicht.
  */
 
 document.addEventListener("DOMContentLoaded", function () {
   initMobileNav();
   initContactForm();
   updateFooterYear();
+  initNews();
+  initShare();
+  initGalleries();
 });
 
 /**
@@ -80,5 +84,245 @@ function initContactForm() {
     }
 
     form.reset();
+  });
+}
+
+/**
+ * Wurzel der Website (Ordner, in dem js/main.js liegt). Damit funktionieren
+ * Links auch auf Seiten in Unterordnern (z. B. beitraege/<id>.html).
+ */
+function siteUrl(path) {
+  var self = document.querySelector('script[src*="js/main.js"]');
+  var root = self ? self.src.replace(/js\/main\.js.*$/, "") : "";
+  return root + path;
+}
+
+/**
+ * Beiträge aus js/beitraege.js (Liste BEITRAEGE, neueste zuerst), jeweils als
+ * Teaser mit Link auf die eigene Seite beitraege/<id>.html.
+ * Startseite:  data-news="latest"  -> die drei neuesten Beiträge ohne archiv: true
+ * Archivseite: data-news="archive" -> alle Beiträge, nach Jahren gruppiert
+ */
+var NEWS_ON_HOMEPAGE = 3;
+var NEWS_TEASER_LENGTH = 160;
+
+function initNews() {
+  var lists = document.querySelectorAll("[data-news]");
+
+  if (!lists.length || typeof BEITRAEGE === "undefined") {
+    return;
+  }
+
+  lists.forEach(function (list) {
+    var art = list.getAttribute("data-news");
+
+    if (art === "latest") {
+      var items = BEITRAEGE.filter(function (item) {
+        return !item.archiv;
+      }).slice(0, NEWS_ON_HOMEPAGE);
+      list.innerHTML = items.length
+        ? items.map(renderNewsTeaser).join("")
+        : "<p>Derzeit gibt es keine Beiträge.</p>";
+      return;
+    }
+
+    // Archiv: Jahres-Überschrift vor dem ersten Beitrag eines Jahres
+    var jahr = "";
+    list.innerHTML = BEITRAEGE.map(function (item) {
+      var j = item.id.slice(0, 4);
+      var kopf = j !== jahr ? '<h2 class="news-year" id="jahr-' + j + '">' + j + "</h2>" : "";
+      jahr = j;
+      return kopf + renderNewsTeaser(item);
+    }).join("");
+  });
+}
+
+function renderNewsTeaser(item) {
+  var url = siteUrl("beitraege/" + item.id + ".html");
+  var bild = item.bilder && item.bilder.length ? item.bilder[0] : null;
+  var bildHtml = "";
+
+  if (bild) {
+    var datei = typeof bild === "string" ? bild : bild.datei;
+    var beschreibung = (typeof bild === "string" ? "" : bild.beschreibung || "").replace(/"/g, "&quot;");
+    bildHtml =
+      '<a class="news-item__thumb" href="' + url + '" tabindex="-1" aria-hidden="true">' +
+        '<img src="' + siteUrl(datei) + '" alt="' + beschreibung + '" loading="lazy">' +
+      "</a>";
+  }
+
+  return (
+    '<article class="news-item news-item--teaser' + (bildHtml ? " news-item--media" : "") + '">' +
+      '<div class="news-item__body">' +
+        '<span class="news-item__date">' + item.datum + "</span>" +
+        '<h3 class="news-item__title"><a href="' + url + '">' + item.titel + "</a></h3>" +
+        (item.komplett
+          ? "<p>" + item.text + "</p>"
+          : "<p>" + newsTeaser(item) + "</p>" +
+            '<a class="news-item__more" href="' + url + '">Weiterlesen <span aria-hidden="true">→</span></a>') +
+      "</div>" +
+      bildHtml +
+    "</article>"
+  );
+}
+
+/** Eigener Teaser oder die ersten NEWS_TEASER_LENGTH Zeichen des Textes (ohne HTML), am Wortende gekürzt. */
+function newsTeaser(item) {
+  if (item.teaser) {
+    return item.teaser;
+  }
+  var tmp = document.createElement("div");
+  tmp.innerHTML = item.text.replace(/<\/p>\s*<p>/g, " ");
+  var text = tmp.textContent.replace(/\s+/g, " ").trim();
+  if (text.length <= NEWS_TEASER_LENGTH) {
+    return escapeHtml(text);
+  }
+  var cut = text.slice(0, NEWS_TEASER_LENGTH);
+  cut = cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,;:.–-]+$/, "");
+  return escapeHtml(cut) + " …";
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Einzelseite eines Beitrags: Link teilen (Handy) bzw. kopieren (PC). */
+function initShare() {
+  var button = document.querySelector("[data-share]");
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener("click", function () {
+    var url = window.location.href.split("#")[0];
+    var label = button.querySelector("span");
+
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: url }).catch(function () {});
+      return;
+    }
+
+    function fertig(text) {
+      label.textContent = text;
+      setTimeout(function () { label.textContent = "Link kopieren"; }, 2500);
+    }
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function () {
+        fertig("Link kopiert ✓");
+      }, function () {
+        window.prompt("Link zum Kopieren:", url);
+      });
+    } else {
+      window.prompt("Link zum Kopieren:", url);
+    }
+  });
+}
+
+/**
+ * Großansicht für Bilder: jeder Bereich mit [data-gallery], der Bildlinks
+ * (<a href="großes Bild"><img></a>) enthält. Pfeile, Esc und Wischen.
+ * Bildunterschrift: data-caption am Link oder figcaption der umgebenden figure.
+ */
+function initGalleries() {
+  var galerien = document.querySelectorAll("[data-gallery]");
+  if (!galerien.length) {
+    return;
+  }
+
+  var box = document.createElement("div");
+  box.className = "lightbox";
+  box.hidden = true;
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.setAttribute("aria-label", "Bild in Großansicht");
+  box.innerHTML =
+    '<img class="lightbox__img" alt="">' +
+    '<button type="button" class="lightbox__btn lightbox__close" aria-label="Schließen">&times;</button>' +
+    '<button type="button" class="lightbox__btn lightbox__prev" aria-label="Vorheriges Bild">&#8249;</button>' +
+    '<button type="button" class="lightbox__btn lightbox__next" aria-label="Nächstes Bild">&#8250;</button>' +
+    '<p class="lightbox__count" aria-live="polite"></p>';
+  document.body.appendChild(box);
+
+  var bild = box.querySelector(".lightbox__img");
+  var zaehler = box.querySelector(".lightbox__count");
+  var links = [];
+  var index = 0;
+  var ausloeser = null;
+
+  function zeigen(i) {
+    index = (i + links.length) % links.length;
+    var link = links[index];
+    bild.src = link.href;
+    bild.alt = link.querySelector("img").alt;
+    var figur = link.closest("figure");
+    var unterschrift = link.getAttribute("data-caption") ||
+      (figur && figur.querySelector("figcaption") ? figur.querySelector("figcaption").textContent : "");
+    zaehler.textContent = (index + 1) + " / " + links.length + (unterschrift ? " · " + unterschrift.replace(/\s+/g, " ").trim() : "");
+    var mehrere = links.length > 1;
+    box.querySelector(".lightbox__prev").hidden = !mehrere;
+    box.querySelector(".lightbox__next").hidden = !mehrere;
+  }
+
+  function oeffnen(galerie, link) {
+    links = Array.prototype.slice.call(galerie.querySelectorAll("a[href]")).filter(function (a) {
+      return a.querySelector("img");
+    });
+    ausloeser = link;
+    zeigen(links.indexOf(link));
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+    box.querySelector(".lightbox__close").focus();
+  }
+
+  function schliessen() {
+    box.hidden = true;
+    bild.removeAttribute("src");
+    document.body.style.overflow = "";
+    if (ausloeser) {
+      ausloeser.focus();
+    }
+  }
+
+  galerien.forEach(function (galerie) {
+    galerie.addEventListener("click", function (e) {
+      var link = e.target.closest("a[href]");
+      if (!link || !link.querySelector("img")) {
+        return;
+      }
+      e.preventDefault();
+      oeffnen(galerie, link);
+    });
+  });
+
+  box.querySelector(".lightbox__close").addEventListener("click", schliessen);
+  box.querySelector(".lightbox__prev").addEventListener("click", function () { zeigen(index - 1); });
+  box.querySelector(".lightbox__next").addEventListener("click", function () { zeigen(index + 1); });
+  box.addEventListener("click", function (e) {
+    if (e.target === box) {
+      schliessen();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (box.hidden) {
+      return;
+    }
+    if (e.key === "Escape") { schliessen(); }
+    if (e.key === "ArrowLeft") { zeigen(index - 1); }
+    if (e.key === "ArrowRight") { zeigen(index + 1); }
+  });
+
+  var startX = null;
+  box.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener("touchend", function (e) {
+    if (startX === null) {
+      return;
+    }
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) {
+      zeigen(dx < 0 ? index + 1 : index - 1);
+    }
+    startX = null;
   });
 }

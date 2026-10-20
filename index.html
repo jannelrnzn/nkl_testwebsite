@@ -7,6 +7,7 @@
   <meta name="description" content="NKL GmbH aus Wolpertshausen entwickelt und fertigt Ringkerndrosseln, Entstörfilter und Übertrager für anspruchsvolle EMV-Anwendungen – Made in Germany.">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/beitraege.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -37,7 +38,7 @@
               <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
               <li><a href="praesentationen.html">Präsentationen</a></li>
               <li><a href="umwelt.html">Umwelt</a></li>
-              <li><a href="archiv.html">Archiv</a></li>
+              <li><a href="archiv.html">Aktuelles</a></li>
             </ul>
           </li>
           <li><a href="produkte.html">Produkte</a></li>
@@ -460,6 +461,7 @@
     </section>
 
     <!-- ============================= Aktuelles ============================= -->
+    <!-- Beiträge kommen aus js/beitraege.js (die drei neuesten ohne archiv: true) -->
     <section class="section section--muted">
       <div class="container">
         <div class="section-head">
@@ -467,35 +469,11 @@
           <h2>Neuigkeiten von der NKL GmbH</h2>
         </div>
 
-        <div class="grid grid--3">
-          <div class="card">
-            <h3>Rezertifizierung nach ISO 9001</h3>
-            <p>
-              Unsere erfolgreiche Rezertifizierung nach ISO 9001:2015 durch
-              die LGA InterCert (gültig bis 06.09.2028) belegt einmal mehr
-              den hohen Stand unseres Qualitätsmanagementsystems – im
-              Einsatz seit 1998.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Wichtige Informationen zum Herunterladen</h3>
-            <p>
-              Zur Unterstützung unserer Kunden haben wir Zertifikate,
-              Erklärungen und Schulungsunterlagen im Downloadbereich
-              zusammengestellt.
-            </p>
-            <a class="card__link" href="downloads.html">Zum Downloadbereich &rarr;</a>
-          </div>
-          <div class="card">
-            <h3>REACH 2026</h3>
-            <p>
-              Wir produzieren REACH-konforme Bauelemente. Die Kandidatenliste
-              der ECHA wird regelmäßig aktualisiert – unsere REACH-Erklärung
-              entsprechend angepasst.
-            </p>
-            <a class="card__link" href="downloads.html">Zur REACH-Erklärung &rarr;</a>
-          </div>
-        </div>
+        <div class="news-list news-list--grid" data-news="latest"></div>
+
+        <p class="news-list__more">
+          <a class="btn btn--ghost" href="archiv.html">Alle Beiträge &amp; Archiv</a>
+        </p>
       </div>
     </section>
 
