@@ -41,7 +41,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   (Team-Foto + Abschnitt „Einblicke in unsere Fertigung“ mit 6 Fotos – NICHT auf der Startseite,
   Wunsch Janne), Messlabor (3 Fotos).
 - Personen auf den Fotos: Geschäftsführer **Uwe Lorenzen** (kariertes Hemd, Brille; u. a.
-  9590, 9593, 9603, rechts auf 9597) und Produktionsleiter **Zoran Beric** (grünes Polo,
+  9590, 9593, 9603, rechts auf 9597) und Fertigungsleiter **Zoran Beric** (grünes Polo,
   links auf 9597) – von Janne bestätigt (20.10.2026).
 - Uploads über die GitHub-Weboberfläche landen im Repo-Root → verschieben, umbenennen,
   verkleinern, Originale aus dem Repo entfernen.
