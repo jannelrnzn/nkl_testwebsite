@@ -982,6 +982,54 @@ p {
 /* --------------------------------------------------------------------------
    11. Responsive Anpassungen
    -------------------------------------------------------------------------- */
+
+/* ==========================================================================
+   Fotos (Shooting 2026): Einzelbild mit Unterschrift und Bildraster
+   ========================================================================== */
+.photo {
+  margin: 0;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  object-fit: cover;
+}
+
+.photo--wide img {
+  aspect-ratio: 16 / 10;
+}
+
+.photo figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.photo-grid .photo img {
+  aspect-ratio: 4 / 3;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.photo-grid .photo:hover img {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+@media (max-width: 720px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 960px) {
   .grid--4 {
     grid-template-columns: repeat(2, 1fr);

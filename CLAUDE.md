@@ -27,9 +27,16 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - `css/style.css`: eine Datei, CSS-Variablen oben (Farben, Abstände, Schriften).
 - `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr.
 - Bilder flach unter `assets/images/` (teils mit Umlauten im Dateinamen, z. B. `entstörfilter.jpg`).
-- Fotos von SPICY (Shooting 2026) unter `assets/images/fotos/` als `thema-motiv-NNNNN.jpg`
-  (NNNNN = Nummer der Originaldatei DSC0NNNNN.JPG), max. 2400 px, ohne EXIF, Qualität 82.
-  Themen: fertigung, pruefung, messlabor, team, produkte. Noch nicht in Seiten eingebaut.
+- Fotos von SPICY (Shooting 2026) unter `assets/images/fotos/` als `thema-motiv-NNNN.jpg`
+  (NNNN = Nummer der Originaldatei DSC0NNNN.JPG), max. 2400 px, ohne EXIF, Qualität 82.
+  Themen: fertigung, pruefung, messlabor, team, produkte. CSS: `.photo` (figure mit
+  figcaption, `.photo--wide` = 16:10) und `.photo-grid` (3 Spalten, Handy 2).
+  Eingebaut (20.10.2026): Startseite (Kernkompetenz-Bild, Abschnitt „Einblicke in unsere
+  Fertigung“ mit 6 Fotos), Messlabor (3 Fotos statt messlabor1–4.jpg), Unternehmen
+  (Team-Foto). Alte Bilder `messlabor1–4.jpg`, `Ringkerndrossel_groß_startseite.jpg` ungenutzt.
+- Personen auf den Fotos: Geschäftsführer **Uwe Lorenzen** (kariertes Hemd, Brille; u. a.
+  9590, 9593, 9603, rechts auf 9597) und Produktionsleiter **Zoran Beric** (grünes Polo,
+  links auf 9597) – Zuordnung von Claude anhand der Fotos, von Janne zu bestätigen.
 - Uploads über die GitHub-Weboberfläche landen im Repo-Root → verschieben, umbenennen,
   verkleinern, Originale aus dem Repo entfernen.
 
