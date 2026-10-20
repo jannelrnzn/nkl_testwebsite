@@ -72,8 +72,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Seiten (Stand 18.09.2026)
 
-- `index.html`: Hero mit Foto Firmengelände (Video folgt), Kennzahlen, Dienstleistungen,
-  Produktwelt mit Bildern, Kompetenz, Qualitätspolitik, Aktuelles (3 neueste Beiträge).
+- `index.html` (Reihenfolge seit 20.10.2026, Wunsch Janne: Beiträge schnell erreichbar): Hero (Foto
+  Firmengelände, Video folgt) · Kennzahlen · **Aktuelles** (3 neueste Beiträge) · Was uns auszeichnet ·
+  Einblicke in die Fertigung · Dienstleistungen · Produktwelt · Musterkästen · Qualitätspolitik.
+  Hintergründe abwechselnd weiß/grau. Abschnitt „Warum NKL? – Kompetenz in EMV“ (3 Karten) entfernt (doppelt).
 - `unternehmen.html` (gekürzt, nur Originaltext), `historie.html` (Zeitleiste, Fotos
   Klaus und Uwe Lorenzen), `geschaeftsfelder.html`, `umwelt.html`, `archiv.html`
   (= „Aktuelles & Archiv“, alle Beiträge, siehe unten).
