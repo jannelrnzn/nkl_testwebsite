@@ -110,7 +110,8 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Anleitung für Redakteure: `REDAKTION.md` (wird nicht veröffentlicht).
 - Login „Mit GitHub anmelden“ über den Worker von JL Webservice
   (`backend.base_url` = https://sveltia-cms-auth.jl-webservice.workers.dev, GitHub OAuth-App „JL Webservice CMS“,
-  `ALLOWED_DOMAINS` enthält `jannelrnzn.github.io`; Einrichtung siehe CLAUDE.md der TSV-Seite). Redakteure =
+  `ALLOWED_DOMAINS` enthält `jannelrnzn.github.io`; Einrichtung siehe CLAUDE.md der TSV-Seite). Login und Speichern
+  am 29.10.2026 von Janne live getestet (Commit-Text z. B. „Inhalt neu: Beitrag <slug>“). Redakteure =
   GitHub-Konto + Einladung als Collaborator (Write) durch Janne. Secrets NIE in Chat/Repo.
 - Erfahrungen vom TSV übernommen: Bilder beim Hochladen automatisch WebP, max. 2400 px; Dateinamen bereinigt
   (`slugify_filename`); **kein** Feld „ganzen Text zeigen“ (`komplett` wirkt nur, wenn von Hand in der .md);
