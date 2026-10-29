@@ -59,7 +59,7 @@ Eine neue Fassung (z. B. aktualisierte REACH-Erklärung) lädst du über **Erset
   authentication). Dein GitHub-Zugang erlaubt Änderungen an der Website und sollte gut geschützt sein.
 - Nicht an fremden oder gemeinsam genutzten Rechnern anmelden – und falls doch, danach über dein Profilbild
   oben rechts **abmelden**.
-- Komm dir etwas merkwürdig vor (unbekannte Änderungen, seltsame Anmeldeaufforderung), melde dich bei Janne.
+- Kommt dir etwas merkwürdig vor (unbekannte Änderungen, seltsame Anmeldeaufforderung), melde dich bei Janne.
 
 ## Gut zu wissen
 
