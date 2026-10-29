@@ -171,7 +171,6 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Datenschutz ergänzen) oder später beim eigenen Hoster.
 - **Downloads/Präsentationen:** Dateien fehlen noch (Kurzbeschreibung, Präsentation, Messlabor, Produkte,
   REACH/RoHS/Konfliktmaterialien, AGB, Anfahrtskizze, Schulungen) – Einpflegen jetzt über das CMS.
-  Hinweis auf den PowerPoint-Viewer in `praesentationen.html` ggf. streichen (von Microsoft eingestellt).
 - **Kontaktformular:** nicht angebunden (kein Backend). Weg klären (z. B. PHP beim Hoster
   wie `kontakt.php` bei der TSV-Seite), danach Platzhalter-Hinweise in
   `kontaktformular.html` und `js/main.js` entfernen.
