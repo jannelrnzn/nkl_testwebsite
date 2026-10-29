@@ -15,6 +15,11 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - Kein Cache-Busting (CSS/JS ohne `?v=`) – bei Bedarf wie bei der TSV-Seite nachrüsten.
 - Konzept-Seite über GitHub Pages: https://jannelrnzn.github.io/nkl_testwebsite/index.html
   (an Agentur SPICY geschickt). Späteres Hosting noch offen (siehe „Hosting / Domain“).
+- **Veröffentlichung seit CMS (29.10.2026): GitHub Action `.github/workflows/pages.yml`** („Website veröffentlichen“)
+  baut bei jedem Push auf `main` mit `tools/build.sh` nach `dist/` (Beiträge + Downloads aus `content/`) und stellt
+  `dist/` auf Pages. Voraussetzung: Settings → Pages → Source = **GitHub Actions** (nicht mehr „Deploy from a branch“).
+- **Lokale Vorschau:** vorher `node tools/beitraege.js && node tools/downloads.js` ausführen (erzeugt
+  `js/beitraege.js`, `js/downloads.js`, `beitraege/` – nicht im Repo). Oder `bash tools/build.sh` und `dist/` ansehen.
 
 ## Aufbau
 
@@ -31,7 +36,8 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - Footer-Leiste: Impressum · AGB · Datenschutz · Gesetzliche Gewährleistung; Jahr per JS (`#year`).
 - `css/style.css`: eine Datei, CSS-Variablen oben (Farben, Abstände, Schriften).
 - `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr, Beiträge
-  (`initNews`), Link teilen (`initShare`), Großansicht (`initGalleries`, alles mit `[data-gallery]`).
+  (`initNews`), Downloads (`initDownloads`), Link teilen (`initShare`), Großansicht (`initGalleries`, alles mit
+  `[data-gallery]`), Hero-Video (`initHeroVideo`).
 - Bilder flach unter `assets/images/` (teils mit Umlauten im Dateinamen, z. B. `entstörfilter.jpg`).
 - Fotos von SPICY (Shooting 2026) unter `assets/images/fotos/` als `thema-motiv-NNNN.jpg`
   (NNNN = Nummer der Originaldatei DSC0NNNN.JPG), max. 2400 px, ohne EXIF, Qualität 82.
@@ -91,33 +97,68 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 - `produkte.html` (Karten mit „Anfrage stellen“ → Kontaktformular),
   `anwendungsbereiche.html` (Schaltplan + Typenbezeichnung; Musterkästen entfernt),
   `messlabor.html` (Originaltext + 4 Laborfotos), `beratung.html`.
-- `downloads.html`, `praesentationen.html`: nur Einträge mit Badge „In Vorbereitung“.
+- `downloads.html` (Bereiche `unternehmen`, `schulungen`, `information`), `praesentationen.html` (`praesentationen`):
+  Einträge aus dem CMS (siehe „Downloads & Präsentationen“); ohne Datei Badge „In Vorbereitung“.
 - `kontakt.html`, `kontaktformular.html`, `anfahrt.html` (Google-Maps-iframe, direkt eingebunden).
 - Rechtliches: `impressum.html`, `agb.html`, `datenschutz.html`, `gewaehrleistung.html`.
 
-## Beiträge (Aktuelles) – wie Mitteilungen der TSV-Seite (umgesetzt 20.10.2026)
+## CMS (Sveltia) – wie beim TSV Hessental (umgesetzt 29.10.2026)
 
-- Pflege nur durch Janne (über Claude/GitHub). Inhalt nur in `js/beitraege.js` (Liste `BEITRAEGE`,
-  neueste zuerst). Neuer Beitrag = neuer Eintrag ganz oben: `id` (`JJJJ-MM-TT-stichwort`, ohne Tag
-  `JJJJ-MM-stichwort`; nie mehr ändern), `datum` (Anzeige, z. B. „Februar 2026“), `titel`, `text`
-  (HTML, Absätze `</p><p>`, Links wie von der Startseite aus); optional `teaser`, `komplett: true`,
-  `bilder` (`assets/images/beitraege/` oder `assets/images/fotos/`), `archiv: true`.
-- **Danach immer `node tools/beitraege.js`** → erzeugt `beitraege/<id>.html` (Kopf/Menü/Fuß aus
-  `archiv.html`, Pfade `../`, Linkvorschau für LinkedIn/WhatsApp, Neuer/Älter, „Link kopieren“), löscht
-  veraltete. Dateien in `beitraege/` nie von Hand bearbeiten. Auch nach Menü-/Footer-Änderungen ausführen.
+- **Redaktion unter https://jannelrnzn.github.io/nkl_testwebsite/admin/** (`admin/index.html` mit noindex, kein Link
+  auf der Seite; `admin/config.yml`). Zwei Sammlungen: **Beiträge (Aktuelles & Archiv)** und **Downloads & Präsentationen**.
+  Speichern = Commit auf `main` → Action „Website veröffentlichen“ → nach ca. 1–2 Minuten online.
+  Anleitung für Redakteure: `REDAKTION.md` (wird nicht veröffentlicht).
+- Login „Mit GitHub anmelden“ über den Worker von JL Webservice
+  (`backend.base_url` = https://sveltia-cms-auth.jl-webservice.workers.dev, GitHub OAuth-App „JL Webservice CMS“,
+  `ALLOWED_DOMAINS` enthält `jannelrnzn.github.io`; Einrichtung siehe CLAUDE.md der TSV-Seite). Redakteure =
+  GitHub-Konto + Einladung als Collaborator (Write) durch Janne. Secrets NIE in Chat/Repo.
+- Erfahrungen vom TSV übernommen: Bilder beim Hochladen automatisch WebP, max. 2400 px; Dateinamen bereinigt
+  (`slugify_filename`); **kein** Feld „ganzen Text zeigen“ (`komplett` wirkt nur, wenn von Hand in der .md);
+  Liste zeigt nur „geändert <Datum, Uhrzeit> Uhr“ (`commit_date`), **ohne** „von wem“. Lokal ist das Datum leer
+  (keine Git-Historie), auf GitHub gefüllt.
+- Änderungen an `admin/config.yml` immer lokal testen: Sveltia lokal laden (Bundle per curl herunterladen und im
+  Test-`index.html` lokal einbinden), mit Playwright (`/opt/node22/lib/node_modules/playwright`) `showDirectoryPicker`
+  auf ein OPFS-Verzeichnis mit den Repo-Dateien umbiegen → „Mit lokalem Repository arbeiten“. Fehler in config.yml
+  zeigen nur eine Fehlerseite; unbekannte Widgets fallen erst im Editor auf.
+
+## Beiträge (Aktuelles & Archiv)
+
+- **Quelle = eine Datei je Beitrag:** `content/beitraege/<id>.md` (Dateiname = id = Adresse `beitraege/<id>.html`,
+  neu: `JJJJ-MM-TT-stichwort`, ältere übernommene `JJJJ-MM-stichwort`; NIE umbenennen). YAML-Kopf: `titel`,
+  `datum` (JJJJ-MM-TT, sortiert, neueste zuerst; bei nur Monat/Jahreszeit der 1.), optional `datum_text`
+  (Anzeige statt Datum, z. B. „Februar 2026“, „Sommer 2018“), `stichwort` (nur fürs CMS), `teaser`, `archiv`,
+  `bilder` (Liste `datei` + `beschreibung`, Pfade mit führendem `/`). Text = Markdown (Leerzeile = Absatz,
+  einfacher Umbruch = `<br>`, Bild als eigener Absatz `![alt](/pfad "Unterschrift")` → Bild in Textbreite,
+  externe Links in neuem Tab). Aufbau ausführlich oben in `tools/beitraege.js` (angepasste Kopie von
+  `tools/mitteilungen.js` der TSV-Seite; Markdown/YAML aus `tools/vendor/`, marked 16 + js-yaml 4).
+- **Erzeugt (nicht im Repo, `.gitignore`):** `js/beitraege.js` (Liste `BEITRAEGE` für `initNews`) und
+  `beitraege/<id>.html` (Kopf/Menü/Fuß aus `archiv.html`, Pfade `../`, Linkvorschau für LinkedIn/WhatsApp,
+  Neuer/Älter, „Link kopieren“). `tools/build.sh` erzeugt beides in `dist/` und setzt `js/beitraege.js?v=<Prüfsumme>`
+  in index/archiv (im Repo steht `?v=0`). Nach Menü-/Footer-Änderungen nichts weiter nötig (wird beim Build erzeugt).
 - Startseite: Abschnitt „Aktuelles“ (`data-news="latest"`) = 3 neueste ohne `archiv: true`, als Karten
   nebeneinander, Button „Alle Beiträge & Archiv“. `archiv.html` (`data-news="archive"`) = alle, nach
   Jahr gruppiert (Jahr aus der `id`). Teaser automatisch ca. 160 Zeichen (`NEWS_TEASER_LENGTH`).
-- `SITE_URL` in `tools/beitraege.js` = https://jannelrnzn.github.io/nkl_testwebsite/ → nach dem Umzug auf
-  die eigene Domain umstellen und Skript neu ausführen. Standardbild Linkvorschau: Ringkerndrossel-Foto.
+- `SITE_URL` in `tools/beitraege.js` und `tools/build.sh` = https://jannelrnzn.github.io/nkl_testwebsite/ → nach dem
+  Umzug auf die eigene Domain umstellen. Standardbild Linkvorschau: Ringkerndrossel-Foto.
 - Bestand: electronica 2026 (20.10.2026, Halle B6 Stand 130, 10.–13.11.2026; Bild = offizielles
   Logo von electronica.de/Messebilder & Logos + Messedaten, Hallenplan B6 mit rot markiertem Stand, ohne
   Werbebanner, Quelle exhibitors.electronica.de, © jl.medien GmbH), REACH 2026, Downloads (Okt. 2025),
   ISO-Rezertifizierung (Sept. 2025, mit Zertifikat); Meldungen 2016–2022 von nkl-emv.de/unternehmen/archiv
-  als `archiv: true` – **ohne Weihnachts-/Neujahrsgrüße** (Janne, 20.10.2026), Texte übernommen, ohne Bilder.
-- Bilder für Beiträge unter `assets/images/beitraege/`, Titelbild am besten 1200 × 630 (Format der
-  Linkvorschau; Startseiten-Karten zeigen es unbeschnitten). Ein einzelnes weiteres Bild erscheint auf der
-  Einzelseite in voller Breite.
+  als `archiv: true` – **ohne Weihnachts-/Neujahrsgrüße** (Janne, 20.10.2026).
+- Bilder für Beiträge unter `assets/images/beitraege/` (CMS-Uploads landen dort), Titelbild am besten 1200 × 630
+  (Format der Linkvorschau; Vorschaubilder auf Startseite/Archiv zeigen 1,91 : 1). Ein einzelnes weiteres Bild
+  erscheint auf der Einzelseite in voller Breite.
+
+## Downloads & Präsentationen
+
+- **Quelle = eine Datei je Eintrag:** `content/downloads/<bereich>-<titel>.yml` mit `titel`, `bereich`
+  (`unternehmen` | `schulungen` | `information` = Abschnitte auf `downloads.html`, `praesentationen` = Seite
+  Präsentationen), optional `beschreibung`, `datei` (Pfad mit `/`, CMS-Uploads in `assets/downloads/`),
+  `hinweis` (klein hinter Typ/Größe), `reihenfolge` (Zahl, aufsteigend).
+- `tools/downloads.js` erzeugt `js/downloads.js` (Liste `DOWNLOADS`, mit Dateityp und Größe; nicht im Repo);
+  `initDownloads` füllt `[data-downloads="<bereich>"]`. Ohne Datei: „wird in Kürze bereitgestellt“ + Badge
+  „In Vorbereitung“, mit Datei: Titel verlinkt + Badge „Öffnen“. Cache-Busting `js/downloads.js?v=` wie oben.
+- Bestand: die bisherigen 17 Platzhalter (nur das ISO-Zertifikat hat eine Datei).
 
 ## Offene Punkte (beim Erledigen hier streichen)
 
@@ -128,10 +169,9 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   1080p H.264 + 720p für Handy, je max. ca. 5–8 MB, plus Standbild (`poster`), unter
   `assets/video/`. Kompletter Imagefilm nicht selbst hosten → YouTube/Vimeo (dann
   Datenschutz ergänzen) oder später beim eigenen Hoster.
-- **Downloads/Präsentationen:** PDFs/PowerPoints fehlen (Kurzbeschreibung, Präsentation,
-  Messlabor, Produkte, Zertifikate, REACH-Erklärung …). Wenn da: `href` setzen, Badge und
-  Meta-Text anpassen (Hinweis als Kommentar in `downloads.html`). Hinweis auf den
-  PowerPoint-Viewer ggf. streichen (von Microsoft eingestellt).
+- **Downloads/Präsentationen:** Dateien fehlen noch (Kurzbeschreibung, Präsentation, Messlabor, Produkte,
+  REACH/RoHS/Konfliktmaterialien, AGB, Anfahrtskizze, Schulungen) – Einpflegen jetzt über das CMS.
+  Hinweis auf den PowerPoint-Viewer in `praesentationen.html` ggf. streichen (von Microsoft eingestellt).
 - **Kontaktformular:** nicht angebunden (kein Backend). Weg klären (z. B. PHP beim Hoster
   wie `kontakt.php` bei der TSV-Seite), danach Platzhalter-Hinweise in
   `kontaktformular.html` und `js/main.js` entfernen.

@@ -1,0 +1,13 @@
+./.git
+./.github
+./.devserver
+./.vscode
+./.gitignore
+./dist
+./CLAUDE.md
+./REDAKTION.md
+./js/beitraege.js
+./js/downloads.js
+./beitraege
+.DS_Store
+Thumbs.db

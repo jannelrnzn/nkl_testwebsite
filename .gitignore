@@ -1,2 +1,9 @@
 Thumbs.db
 .DS_Store
+
+dist/
+
+# Erzeugt aus content/ (node tools/beitraege.js, node tools/downloads.js; bei jeder Veröffentlichung automatisch)
+/js/beitraege.js
+/js/downloads.js
+/beitraege/

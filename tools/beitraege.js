@@ -1,65 +1,205 @@
 #!/usr/bin/env node
 /**
- * Erzeugt aus js/beitraege.js für jeden Beitrag eine eigene Seite
- * beitraege/<id>.html (Kopf, Menü und Fußzeile kommen aus archiv.html).
+ * Erzeugt aus den Beiträgen in content/beitraege/*.md (eine Datei je Beitrag,
+ * gepflegt über das CMS unter /admin oder von Hand):
+ *   - js/beitraege.js  (Liste BEITRAEGE für Startseite und Archiv)
+ *   - beitraege/<id>.html  (eigene Seite je Beitrag; Kopf, Menü und Fußzeile
+ *     kommen aus archiv.html)
+ * Beides ist erzeugt, steht nicht im Repository und wird nie von Hand bearbeitet.
  *
  * Aufruf im Repo-Ordner:  node tools/beitraege.js
  *
- * Nach JEDER Änderung an js/beitraege.js oder an Menü/Footer
- * erneut ausführen. Seiten von gelöschten Beiträgen werden entfernt.
+ * Läuft bei jeder Veröffentlichung automatisch (tools/build.sh, GitHub Action).
+ * Lokal nach Änderungen an den Beiträgen oder am Menü/Footer erneut ausführen.
+ * Seiten von gelöschten Beiträgen werden entfernt.
+ *
+ * Aufbau einer Datei content/beitraege/<id>.md (Dateiname = id = Adresse,
+ * Muster JJJJ-MM-TT-stichwort, ältere auch JJJJ-MM-stichwort, später nie ändern):
+ *   ---
+ *   titel: Überschrift
+ *   datum: 2026-10-20            (sortiert die Liste, neueste zuerst)
+ *   datum_text: Februar 2026     optional, ersetzt das angezeigte Datum
+ *   stichwort: electronica-2026  nur für den Dateinamen beim Anlegen im CMS
+ *   teaser: …                    optional eigener Kurztext für Startseite/Archiv
+ *   komplett: true               optional, ganzer Text statt Teaser (nur von Hand)
+ *   archiv: true                 optional, nicht mehr auf der Startseite
+ *   bilder:                      optional, erstes Bild groß, weitere als Raster
+ *     - datei: /assets/images/beitraege/bild.jpg
+ *       beschreibung: Bildunterschrift
+ *   ---
+ *   Text in Markdown: Leerzeile = neuer Absatz, einfacher Zeilenumbruch = <br>,
+ *   **fett**, [Link](downloads.html) (Pfad wie von der Startseite aus),
+ *   ![Alternativtext](/assets/images/beitraege/bild.jpg "Bildunterschrift")
+ *   als eigener Absatz = Bild mitten im Text.
  */
 
 "use strict";
 
 var fs = require("fs");
 var path = require("path");
-var vm = require("vm");
+var yaml = require("./vendor/js-yaml.js");
+var marked = require("./vendor/marked.js");
 
 // Adresse der Website – für Linkvorschau (LinkedIn, WhatsApp) nötig.
-// Nach dem Umzug auf die eigene Domain hier umstellen (Umgebungsvariable SITE_URL überschreibt).
+// Nach dem Umzug auf die eigene Domain hier und in tools/build.sh umstellen.
 var SITE_URL = process.env.SITE_URL || "https://jannelrnzn.github.io/nkl_testwebsite/";
 
 var ROOT = path.join(__dirname, "..");
+var QUELLE = path.join(ROOT, "content/beitraege");
 var ZIEL = path.join(ROOT, "beitraege");
+var LISTE = path.join(ROOT, "js/beitraege.js");
 var VORLAGE = path.join(ROOT, "archiv.html");
-var MARKER = "<!-- Automatisch erzeugt aus js/beitraege.js (node tools/beitraege.js) – nicht von Hand bearbeiten -->";
+var MARKER = "<!-- Automatisch erzeugt aus content/beitraege (node tools/beitraege.js) – nicht von Hand bearbeiten -->";
+var ALTER_MARKER = "<!-- Automatisch erzeugt aus js/beitraege.js";
 var STANDARD_BILD = "assets/images/fotos/produkte-ringkerndrossel-9626.jpg";
 var TEASER_LAENGE = 220;
+var MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+
+// ---------- Markdown -> HTML ----------
+
+marked.use({
+  gfm: true,
+  breaks: true,
+  renderer: {
+    // Bild als eigener Absatz -> Bild in Textbreite mit Bildunterschrift (Großansicht per Klick)
+    paragraph: function (token) {
+      var inhalt = token.tokens.filter(function (t) { return !(t.type === "text" && !t.raw.trim()); });
+      if (inhalt.length === 1 && inhalt[0].type === "image") {
+        var bild = inhalt[0];
+        var datei = pfad(bild.href);
+        var unterschrift = bild.title || "";
+        return '<figure class="news-detail__figure" data-gallery><a href="' + datei + '"><img src="' + datei +
+          '" alt="' + attr(bild.text || unterschrift) + '" loading="lazy"></a>' +
+          (unterschrift ? "<figcaption>" + unterschrift + "</figcaption>" : "") + "</figure>";
+      }
+      return "<p>" + this.parser.parseInline(token.tokens) + "</p>";
+    },
+    image: function (token) {
+      return '<img src="' + pfad(token.href) + '" alt="' + attr(token.text || "") + '" loading="lazy">';
+    },
+    // Externe Links in neuem Tab
+    link: function (token) {
+      var extern = /^https?:/.test(token.href);
+      return '<a href="' + attr(pfad(token.href)) + '"' + (extern ? ' target="_blank" rel="noopener"' : "") + ">" +
+        this.parser.parseInline(token.tokens) + "</a>";
+    },
+    table: function (token) {
+      var self = this;
+      var zeile = function (zellen, tag) {
+        return "<tr>" + zellen.map(function (z) { return "<" + tag + ">" + self.parser.parseInline(z.tokens) + "</" + tag + ">"; }).join("") + "</tr>";
+      };
+      return '<table class="stats-table"><thead>' + zeile(token.header, "th") + "</thead><tbody>" +
+        token.rows.map(function (r) { return zeile(r, "td"); }).join("") + "</tbody></table>";
+    }
+  }
+});
+
+// Ergebnis im bisherigen Format: Inhalt ohne äußeres <p>…</p>, Absätze mit </p><p> getrennt
+function textHtml(markdown) {
+  var html = marked.parse(markdown).replace(/>\s*\n\s*</g, "><").trim();
+  if (html.indexOf("<p>") === 0) {
+    html = html.slice(3);
+  }
+  if (html.slice(-4) === "</p>") {
+    html = html.slice(0, -4);
+  }
+  return html;
+}
+
+// Pfade aus dem CMS beginnen mit "/" – auf der Seite relativ zur Startseite
+function pfad(p) {
+  return String(p || "").replace(/^\/(?!\/)/, "");
+}
+
+function datumText(iso) {
+  var t = iso.split("-");
+  return parseInt(t[2], 10) + ". " + MONATE[parseInt(t[1], 10) - 1] + " " + t[0];
+}
 
 // ---------- Daten laden und prüfen ----------
 
-var code = fs.readFileSync(path.join(ROOT, "js/beitraege.js"), "utf8");
-var sandbox = {};
-vm.runInNewContext(code + "\nthis.BEITRAEGE = BEITRAEGE;", sandbox);
-var liste = sandbox.BEITRAEGE;
-
 var fehler = [];
-var ids = {};
-liste.forEach(function (item, i) {
-  var name = item.id || "Eintrag " + (i + 1);
-  if (!item.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(item.id)) {
-    fehler.push(name + ": id fehlt oder enthält ungültige Zeichen (nur a-z, 0-9, -)");
+var liste = fs.readdirSync(QUELLE).filter(function (d) { return /\.md$/.test(d); }).map(function (datei) {
+  var id = datei.replace(/\.md$/, "");
+  var roh = fs.readFileSync(path.join(QUELLE, datei), "utf8").replace(/\r\n/g, "\n");
+  var m = roh.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) {
+    fehler.push(id + ": Kopfbereich (--- … ---) fehlt");
+    return null;
   }
-  if (ids[item.id]) {
-    fehler.push(name + ": id doppelt vergeben");
+  var fm;
+  try {
+    fm = yaml.load(m[1]) || {};
+  } catch (e) {
+    fehler.push(id + ": Kopfbereich fehlerhaft (" + e.reason + ")");
+    return null;
   }
-  ids[item.id] = true;
-  ["datum", "titel", "text"].forEach(function (feld) {
+  var datum = fm.datum instanceof Date ? fm.datum.toISOString().slice(0, 10) : String(fm.datum || "");
+  var item = { id: id };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(datum)) {
+    fehler.push(id + ": Feld \"datum\" fehlt oder ist kein Datum (JJJJ-MM-TT)");
+  } else {
+    item.datum = fm.datum_text ? String(fm.datum_text) : datumText(datum);
+  }
+  item.titel = attr(String(fm.titel || "").trim()).replace(/&quot;/g, '"');
+  item.text = textHtml(m[2]);
+  if (fm.teaser && String(fm.teaser).trim()) {
+    item.teaser = attr(String(fm.teaser).trim()).replace(/&quot;/g, '"');
+  }
+  if (fm.komplett) {
+    item.komplett = true;
+  }
+  if (fm.archiv) {
+    item.archiv = true;
+  }
+  var bilder = (fm.bilder || []).map(function (b) {
+    return typeof b === "string" ? { datei: pfad(b) } : { datei: pfad(b && b.datei), beschreibung: (b && b.beschreibung) || "" };
+  }).filter(function (b) { return b.datei; });
+  if (bilder.length) {
+    item.bilder = bilder;
+  }
+  item._sort = datum;
+  return item;
+}).filter(Boolean);
+
+// Neueste zuerst (bei gleichem Datum nach id)
+liste.sort(function (a, b) {
+  return a._sort === b._sort ? (a.id < b.id ? 1 : -1) : (a._sort < b._sort ? 1 : -1);
+});
+
+liste.forEach(function (item) {
+  var name = item.id;
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(item.id)) {
+    fehler.push(name + ": Dateiname enthält ungültige Zeichen (nur a-z, 0-9, -)");
+  }
+  ["titel", "text"].forEach(function (feld) {
     if (!item[feld]) {
       fehler.push(name + ": Feld \"" + feld + "\" fehlt");
     }
   });
-  bilderVon(item).forEach(function (bild) {
-    if (!fs.existsSync(path.join(ROOT, bild.datei))) {
+  bilderVon(item).concat((item.text.match(/src="[^"]*"/g) || []).map(function (s) {
+    return { datei: s.slice(5, -1) };
+  })).forEach(function (bild) {
+    if (!/^https?:/.test(bild.datei) && !fs.existsSync(path.join(ROOT, bild.datei))) {
       fehler.push(name + ": Bild nicht gefunden: " + bild.datei);
     }
   });
 });
 
 if (fehler.length) {
-  console.error("Fehler in js/beitraege.js:\n  - " + fehler.join("\n  - "));
+  console.error("Fehler in content/beitraege:\n  - " + fehler.join("\n  - "));
   process.exit(1);
 }
+
+liste.forEach(function (item) {
+  delete item._sort;
+});
+
+fs.writeFileSync(
+  LISTE,
+  "/* Automatisch erzeugt aus content/beitraege (node tools/beitraege.js) – nicht von Hand bearbeiten. */\n" +
+  "var BEITRAEGE = " + JSON.stringify(liste, null, 1) + ";\n"
+);
 
 // ---------- Vorlage zerlegen ----------
 
@@ -88,11 +228,16 @@ liste.forEach(function (item, i) {
 });
 
 // Seiten entfernen, deren Beitrag es nicht mehr gibt (nur selbst erzeugte)
+var ids = {};
+liste.forEach(function (item) {
+  ids[item.id] = true;
+});
 var entfernt = 0;
 fs.readdirSync(ZIEL).forEach(function (datei) {
   var id = datei.replace(/\.html$/, "");
   var voll = path.join(ZIEL, datei);
-  if (/\.html$/.test(datei) && !ids[id] && fs.readFileSync(voll, "utf8").indexOf(MARKER) > -1) {
+  var inhalt = /\.html$/.test(datei) ? fs.readFileSync(voll, "utf8") : "";
+  if (!ids[id] && (inhalt.indexOf(MARKER) > -1 || inhalt.indexOf(ALTER_MARKER) > -1)) {
     fs.unlinkSync(voll);
     entfernt++;
   }

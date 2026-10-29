@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initContactForm();
   updateFooterYear();
   initNews();
+  initDownloads();
   initShare();
   initGalleries();
 });
@@ -223,6 +224,50 @@ function renderNewsTeaser(item) {
       bildHtml +
     "</article>"
   );
+}
+
+/**
+ * Downloads und Präsentationen aus js/downloads.js (Liste DOWNLOADS, erzeugt aus
+ * content/downloads, gepflegt im CMS). Füllt jeden Bereich [data-downloads="…"].
+ * Ohne Datei erscheint der Eintrag als „In Vorbereitung“.
+ */
+function initDownloads() {
+  var listen = document.querySelectorAll("[data-downloads]");
+
+  if (!listen.length || typeof DOWNLOADS === "undefined") {
+    return;
+  }
+
+  var icon =
+    '<svg class="download-item__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">' +
+    '<path d="M12 4h16l8 8v32H12V4z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>' +
+    '<path d="M28 4v8h8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>';
+
+  listen.forEach(function (liste) {
+    var bereich = liste.getAttribute("data-downloads");
+    var eintraege = DOWNLOADS.filter(function (d) {
+      return d.bereich === bereich;
+    });
+
+    liste.innerHTML = eintraege.map(function (d) {
+      var url = d.datei ? siteUrl(d.datei) : "";
+      var meta = d.datei
+        ? [d.typ, d.groesse, d.hinweis].filter(Boolean).join(" · ")
+        : (d.hinweis ? d.hinweis + " · " : "") + "wird in Kürze bereitgestellt";
+      return (
+        '<div class="download-item">' + icon +
+          '<div class="download-item__info">' +
+            "<h3>" + (url ? '<a href="' + url + '" target="_blank" rel="noopener">' + escapeHtml(d.titel) + "</a>" : escapeHtml(d.titel)) + "</h3>" +
+            (d.beschreibung ? "<p>" + escapeHtml(d.beschreibung) + "</p>" : "") +
+            '<span class="download-item__meta">' + escapeHtml(meta) + "</span>" +
+          "</div>" +
+          "<div>" + (url
+            ? '<a class="badge badge--available" href="' + url + '" target="_blank" rel="noopener">Öffnen</a>'
+            : '<span class="badge badge--pending">In Vorbereitung</span>') + "</div>" +
+        "</div>"
+      );
+    }).join("") || '<p class="download-item__meta">Derzeit keine Einträge.</p>';
+  });
 }
 
 /** Eigener Teaser oder die ersten NEWS_TEASER_LENGTH Zeichen des Textes (ohne HTML), am Wortende gekürzt. */

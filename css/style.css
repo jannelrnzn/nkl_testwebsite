@@ -762,6 +762,14 @@ p {
   color: var(--color-success);
 }
 
+/* Downloads: „Öffnen“ ist ein Link im Badge-Stil */
+a.badge--available:hover,
+a.badge--available:focus-visible {
+  background-color: var(--color-success);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
 /* Produktwelt: Kachel mit Produktfoto */
 .product-card__image {
   display: flex;
@@ -1148,7 +1156,7 @@ main:has(> .section--muted:last-child) + .site-footer {
 
 .news-item__thumb img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1.91 / 1; /* Format der Linkvorschau (1200 × 630) */
   object-fit: cover;
   border-radius: var(--radius);
   transition: opacity var(--transition);
@@ -1167,9 +1175,6 @@ main:has(> .section--muted:last-child) + .site-footer {
 }
 
 .news-list--grid .news-item__thumb { order: -1; }
-
-/* Format der Linkvorschau (1200 × 630), damit Beitragsbilder nicht beschnitten werden */
-.news-list--grid .news-item__thumb img { aspect-ratio: 1.91 / 1; }
 
 .news-list__more {
   margin-top: var(--space-lg);

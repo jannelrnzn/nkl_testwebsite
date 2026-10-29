@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+# Redaktion NKL GmbH (Sveltia CMS) – erreichbar unter https://jannelrnzn.github.io/nkl_testwebsite/admin/
+# Speichern im CMS = Commit auf main -> GitHub Action „Website veröffentlichen“ -> nach ca. 1–2 Minuten online.
+# Anleitung für Redakteure: REDAKTION.md
+
+backend:
+  name: github
+  repo: jannelrnzn/nkl_testwebsite
+  branch: main
+  # Anmelden mit GitHub über den Login-Dienst von JL Webservice (Cloudflare Worker sveltia-cms-auth)
+  base_url: https://sveltia-cms-auth.jl-webservice.workers.dev
+  commit_messages:
+    create: "Inhalt neu: {{collection}} {{slug}}"
+    update: "Inhalt geändert: {{collection}} {{slug}}"
+    delete: "Inhalt gelöscht: {{collection}} {{slug}}"
+    uploadMedia: "Datei hochgeladen: {{path}}"
+    deleteMedia: "Datei gelöscht: {{path}}"
+
+site_url: https://jannelrnzn.github.io/nkl_testwebsite
+display_url: https://jannelrnzn.github.io/nkl_testwebsite
+logo:
+  src: ../assets/images/logo.png
+
+media_folder: /assets/images/beitraege
+public_folder: /assets/images/beitraege
+
+media_libraries:
+  all:
+    # Dateinamen ohne Leerzeichen/Umlaute („Messe Stand.jpg“ -> messe-stand.webp)
+    slugify_filename: true
+  default:
+    config:
+      max_file_size: 26214400 # 25 MB
+      # Fotos beim Hochladen automatisch verkleinern (max. 2400 px, WebP)
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2400
+          height: 2400
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: beitraege
+    label: Beiträge (Aktuelles & Archiv)
+    label_singular: Beitrag
+    description: >-
+      Neueste zuerst. Die drei neuesten Beiträge erscheinen auf der Startseite unter „Aktuelles“,
+      alle unter „Archiv“.
+    folder: content/beitraege
+    extension: md
+    format: frontmatter
+    create: true
+    delete: true
+    # Dateiname = Adresse der Seite (beitraege/<datum>-<stichwort>.html), wird beim ersten Speichern festgelegt
+    slug: "{{datum}}-{{stichwort}}"
+    identifier_field: titel
+    # In der Liste: Datum · Überschrift – zuletzt geändert (aus der GitHub-Historie; „von wem“ bewusst weggelassen)
+    summary: "{{datum | date('DD.MM.YYYY')}} · {{titel}} – geändert {{commit_date | date('DD.MM.YYYY, HH:mm')}} Uhr"
+    preview_path: beitraege/{{slug}}.html
+    sortable_fields:
+      fields: [datum, titel, commit_date]
+      default:
+        field: datum
+        direction: descending
+    fields:
+      - name: titel
+        label: Überschrift
+        widget: string
+      - name: datum
+        label: Datum
+        widget: datetime
+        type: date
+        default: "{{now}}"
+      - name: stichwort
+        label: Stichwort für die Adresse
+        hint: >-
+          Kurz, nur Kleinbuchstaben und Bindestriche, z. B. „electronica-2026“. Ergibt die Adresse
+          …/beitraege/JJJJ-MM-TT-electronica-2026.html und lässt sich danach nicht mehr ändern.
+        widget: string
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Nur Kleinbuchstaben (a–z), Ziffern und Bindestriche, keine Umlaute"]
+      - name: bilder
+        label: Bilder
+        label_singular: Bild
+        hint: >-
+          Das erste Bild erscheint groß nach dem ersten Absatz und als Vorschaubild (auch bei LinkedIn),
+          weitere als Raster am Ende. Ideal fürs erste Bild: Querformat (ca. 1200 × 630).
+        widget: list
+        required: false
+        collapsed: false
+        fields:
+          - name: datei
+            label: Bild
+            widget: image
+            choose_url: false
+          - name: beschreibung
+            label: Bildunterschrift
+            widget: string
+            required: false
+      - name: body
+        label: Text
+        hint: >-
+          Enter = neuer Absatz, Umschalt+Enter = neue Zeile. Links auf eigene Seiten ohne Domain,
+          z. B. downloads.html.
+        widget: richtext
+        buttons: [bold, italic, link, bulleted-list, numbered-list]
+        editor_components: [image]
+      - name: teaser
+        label: Kurztext für Startseite (optional)
+        hint: Ohne Eingabe werden automatisch die ersten Zeilen des Textes verwendet.
+        widget: text
+        required: false
+      - name: archiv
+        label: Nicht mehr auf der Startseite zeigen (nur noch im Archiv)
+        widget: boolean
+        required: false
+        default: false
+      - name: datum_text
+        label: Abweichende Datumsanzeige (optional)
+        hint: Nur nötig, wenn statt des Datums z. B. „Februar 2026“ stehen soll.
+        widget: string
+        required: false
+
+  - name: downloads
+    label: Downloads & Präsentationen
+    label_singular: Download
+    description: >-
+      Einträge auf den Seiten „Downloads“ und „Präsentationen“. Ohne Datei erscheint ein Eintrag
+      als „In Vorbereitung“. Reihenfolge innerhalb eines Bereichs über das Feld „Reihenfolge“.
+    folder: content/downloads
+    extension: yml
+    format: yaml
+    create: true
+    delete: true
+    # Dateien (PDF, PowerPoint …) landen in assets/downloads
+    media_folder: /assets/downloads
+    public_folder: /assets/downloads
+    slug: "{{bereich}}-{{titel}}"
+    identifier_field: titel
+    summary: "{{titel}} – geändert {{commit_date | date('DD.MM.YYYY, HH:mm')}} Uhr"
+    sortable_fields:
+      fields: [reihenfolge, titel, commit_date]
+      default:
+        field: reihenfolge
+        direction: ascending
+    # Liste nach Bereich gruppiert (gleiche Titel wie „NKL Präsentation“ gibt es auf beiden Seiten)
+    view_groups:
+      groups:
+        - { name: bereich, label: Bereich, field: bereich }
+      default: bereich
+    view_filters:
+      - { label: "Downloads – Über die NKL GmbH", field: bereich, pattern: unternehmen }
+      - { label: "Downloads – Schulungen", field: bereich, pattern: schulungen }
+      - { label: "Downloads – Zertifikate & Erklärungen", field: bereich, pattern: information }
+      - { label: "Seite Präsentationen", field: bereich, pattern: praesentationen }
+    fields:
+      - name: titel
+        label: Titel
+        widget: string
+      - name: bereich
+        label: Wo erscheint der Eintrag?
+        widget: select
+        default: information
+        options:
+          - { label: "Downloads – Über die NKL GmbH", value: unternehmen }
+          - { label: "Downloads – Schulungen", value: schulungen }
+          - { label: "Downloads – Zertifikate & Erklärungen", value: information }
+          - { label: "Seite Präsentationen", value: praesentationen }
+      - name: datei
+        label: Datei
+        hint: PDF, PowerPoint, Word oder Bild. Ohne Datei erscheint „In Vorbereitung“.
+        widget: file
+        required: false
+        choose_url: false
+        accept: ".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.zip,.jpg,.jpeg,.png,.webp"
+      - name: beschreibung
+        label: Kurzbeschreibung (optional)
+        widget: string
+        required: false
+      - name: hinweis
+        label: Zusatzangabe (optional)
+        hint: Erscheint klein hinter Dateityp und Größe, z. B. „Stand 02/2026“.
+        widget: string
+        required: false
+      - name: reihenfolge
+        label: Reihenfolge
+        hint: Kleinere Zahl = weiter oben (z. B. 10, 20, 30 …).
+        widget: number
+        value_type: int
+        default: 100

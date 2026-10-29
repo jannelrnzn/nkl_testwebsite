@@ -7,6 +7,7 @@
   <meta name="description" content="Unternehmenspräsentationen der NKL GmbH zum Download.">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/downloads.js?v=0" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -71,41 +72,8 @@
 
     <section class="section">
       <div class="container">
-        <div class="download-list">
-          <div class="download-item">
-            <svg class="download-item__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <path d="M12 4h16l8 8v32H12V4z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M28 4v8h8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            </svg>
-            <div class="download-item__info">
-              <h3>NKL Präsentation</h3>
-              <span class="download-item__meta">PowerPoint &middot; wird in Kürze bereitgestellt</span>
-            </div>
-            <div><span class="badge badge--pending">In Vorbereitung</span></div>
-          </div>
-          <div class="download-item">
-            <svg class="download-item__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <path d="M12 4h16l8 8v32H12V4z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M28 4v8h8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            </svg>
-            <div class="download-item__info">
-              <h3>NKL Produkte</h3>
-              <span class="download-item__meta">PowerPoint &middot; wird in Kürze bereitgestellt</span>
-            </div>
-            <div><span class="badge badge--pending">In Vorbereitung</span></div>
-          </div>
-          <div class="download-item">
-            <svg class="download-item__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <path d="M12 4h16l8 8v32H12V4z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M28 4v8h8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            </svg>
-            <div class="download-item__info">
-              <h3>NKL Messlabor</h3>
-              <span class="download-item__meta">PowerPoint &middot; wird in Kürze bereitgestellt</span>
-            </div>
-            <div><span class="badge badge--pending">In Vorbereitung</span></div>
-          </div>
-        </div>
+        <!-- Einträge aus content/downloads/*.yml mit bereich: praesentationen (CMS) -->
+        <div class="download-list" data-downloads="praesentationen"></div>
 
         <p style="margin-top: var(--space-lg); color: var(--color-gray-500); font-size: 0.9rem;">
           Falls auf Ihrem Rechner kein Microsoft® PowerPoint installiert sein sollte, können Sie sich den kostenlosen Microsoft® PowerPoint Viewer herunterladen.
