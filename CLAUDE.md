@@ -117,6 +117,15 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   (`slugify_filename`); **kein** Feld „ganzen Text zeigen“ (`komplett` wirkt nur, wenn von Hand in der .md);
   Liste zeigt nur „geändert <Datum, Uhrzeit> Uhr“ (`commit_date`), **ohne** „von wem“. Lokal ist das Datum leer
   (keine Git-Historie), auf GitHub gefüllt.
+- **Sicherheit (29.10.2026):** Sveltia mit fester Version + SRI-Prüfsumme in `admin/index.html` (derzeit 0.254.0).
+  **CMS-Version aktualisieren** (bewusst, alle paar Monate, NKL und TSV gemeinsam): neue Version auf
+  https://unpkg.com/@sveltia/cms/package.json nachsehen, Datei `…/@sveltia/cms@<version>/dist/sveltia-cms.js` laden,
+  `echo sha384-$(openssl dgst -sha384 -binary sveltia-cms.js | openssl base64 -A)` → `src` und `integrity` ersetzen,
+  lokal testen (siehe unten), pushen. Sveltia lädt Zusatzteile (Chunks, Sprachdateien) selbst von unpkg, aber mit
+  derselben festen Version. Redakteure: 2FA bei GitHub Pflicht, keine vertraulichen Dokumente (Repo öffentlich,
+  Hinweise in `REDAKTION.md`). Login-Token hat GitHub-Berechtigung `repo` (alle Repos der Person, läuft nicht ab) →
+  nur vertrauenswürdige Collaborators, beim Ausscheiden entfernen. Nach Go-live: eigenes, auf den Website-Ordner
+  beschränktes SFTP-Konto für die Upload-Action.
 - Änderungen an `admin/config.yml` immer lokal testen: Sveltia lokal laden (Bundle per curl herunterladen und im
   Test-`index.html` lokal einbinden), mit Playwright (`/opt/node22/lib/node_modules/playwright`) `showDirectoryPicker`
   auf ein OPFS-Verzeichnis mit den Repo-Dateien umbiegen → „Mit lokalem Repository arbeiten“. Fehler in config.yml

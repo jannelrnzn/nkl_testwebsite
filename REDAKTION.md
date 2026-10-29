@@ -49,6 +49,18 @@ Auf der Startseite erscheinen die drei neuesten Beiträge unter „Aktuelles“,
 
 Eine neue Fassung (z. B. aktualisierte REACH-Erklärung) lädst du über **Ersetzen** beim Feld *Datei* hoch.
 
+## Sicherheit – bitte unbedingt beachten
+
+- **Alles ist öffentlich.** Jeder Beitrag und jede hochgeladene Datei ist sofort für alle im Internet sichtbar –
+  auch Entwürfe gibt es nicht. Gelöschte Dateien bleiben in der Versionsgeschichte erhalten.
+  Deshalb **niemals vertrauliche Dokumente** hochladen (z. B. Preislisten, Angebote, Verträge, Kundendaten,
+  interne Präsentationen oder Zeichnungen).
+- **Zwei-Faktor-Anmeldung (2FA) bei GitHub einschalten** (github.com → Profilbild → Settings → Password and
+  authentication). Dein GitHub-Zugang erlaubt Änderungen an der Website und sollte gut geschützt sein.
+- Nicht an fremden oder gemeinsam genutzten Rechnern anmelden – und falls doch, danach über dein Profilbild
+  oben rechts **abmelden**.
+- Komm dir etwas merkwürdig vor (unbekannte Änderungen, seltsame Anmeldeaufforderung), melde dich bei Janne.
+
 ## Gut zu wissen
 
 - Die Sprache stellst du über dein Profilbild oben rechts → *Einstellungen* auf **Deutsch** um.
