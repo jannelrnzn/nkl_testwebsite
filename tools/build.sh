@@ -18,6 +18,8 @@ tar --exclude-from=tools/upload-ausschluss.txt -cf - . | tar -xpf - -C dist
 
 SITE_URL="$SITE_URL" node dist/tools/beitraege.js
 node dist/tools/downloads.js
+# Alte Adressen (Jimdo) und kurze Adressen auf die neuen Seiten umleiten (tools/weiterleitungen.txt)
+SITE_URL="$SITE_URL" node dist/tools/weiterleitungen.js dist
 rm -rf dist/tools dist/content
 
 # Cache-Busting für die erzeugten Listen: Version = Prüfsumme des Inhalts

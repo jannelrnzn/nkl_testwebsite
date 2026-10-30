@@ -18,8 +18,7 @@
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
-        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH">
-        <span class="logo__tagline">EMV-Bauteile</span>
+        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH – zur Startseite">
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Navigation öffnen">
@@ -28,28 +27,44 @@
         <span class="nav-toggle__bar"></span>
       </button>
 
+      <!-- Hauptmenü: Gruppen klappen per Klick/Tippen auf (Buttons, keine Links – auch auf dem iPad bedienbar) -->
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="main-nav__list">
-          <li><a href="index.html" aria-current="page">Startseite</a></li>
           <li class="main-nav__item--dropdown">
             <button type="button" class="main-nav__toggle" aria-expanded="false">Unternehmen</button>
             <ul class="dropdown">
               <li><a href="unternehmen.html">Firmenportrait</a></li>
               <li><a href="historie.html">Historie</a></li>
               <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
-              <li><a href="praesentationen.html">Präsentationen</a></li>
               <li><a href="umwelt.html">Umwelt</a></li>
             </ul>
           </li>
-          <li><a href="produkte.html">Produkte</a></li>
-          <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
-          <li><a href="messlabor.html">Messlabor</a></li>
-          <li><a href="beratung.html">Beratung</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Produkte</button>
+            <ul class="dropdown">
+              <li><a href="produkte.html">Produktübersicht</a></li>
+              <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
+            </ul>
+          </li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Leistungen</button>
+            <ul class="dropdown">
+              <li><a href="messlabor.html">EMV-Messlabor</a></li>
+              <li><a href="beratung.html">Beratung &amp; Schulung</a></li>
+            </ul>
+          </li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Downloads</button>
+            <ul class="dropdown">
+              <li><a href="downloads.html">Downloads</a></li>
+              <li><a href="praesentationen.html">Präsentationen</a></li>
+            </ul>
+          </li>
           <li><a href="archiv.html">Archiv</a></li>
           <li class="main-nav__item--dropdown">
-            <a href="kontakt.html">Kontakt</a>
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Kontakt</button>
             <ul class="dropdown">
+              <li><a href="kontakt.html">Kontakt</a></li>
               <li><a href="kontaktformular.html">Kontaktformular</a></li>
               <li><a href="anfahrt.html">Anfahrt</a></li>
             </ul>
@@ -116,7 +131,6 @@
       <div class="container">
         <div class="two-col">
           <div>
-            <span class="eyebrow">Unsere Kernkompetenz</span>
             <h2>Was uns auszeichnet</h2>
             <p>
               Einer der Hauptgründe unseres dauerhaften Erfolgs war und ist
@@ -148,7 +162,6 @@
     <section class="section section--muted">
       <div class="container">
         <div class="section-head section-head--center">
-          <span class="eyebrow">Warum NKL ?</span>
           <h2>Kompetenz in EMV – von der Entwicklung bis zur Messung</h2>
           <p class="lead">
             Als Hersteller mit eigenem Messlabor begleiten wir unsere Kunden
@@ -203,7 +216,6 @@
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">Aktuelles</span>
           <h2>Neuigkeiten von der NKL GmbH</h2>
         </div>
 
@@ -220,7 +232,6 @@
     <section class="section section--muted">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">Dienstleistungen</span>
           <h2>EMV-Messung, Beratung und Schulung</h2>
           <p class="lead">
             Neben der Bauteilfertigung bieten wir das komplette Spektrum an
@@ -291,7 +302,6 @@
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">Produktwelt</span>
           <h2>EMV-Bauteile für jede Anwendung</h2>
           <p class="lead">
             Von Gleichtakt- und Gegentaktdrosseln über Entstörfilter bis hin
@@ -366,11 +376,10 @@
 
 
     <!-- ============================= Musterkästen ============================= -->
-    <section class="section section--muted">
+    <section id="musterkaesten" class="section section--muted">
       <div class="container">
         <div class="two-col">
           <div>
-            <span class="eyebrow">Für Entwickler</span>
             <h2>Musterkästen zum Testen</h2>
             <p>
               Für Entwickler elektronischer Schaltungen und Mitarbeiter von
@@ -410,7 +419,6 @@
       <div class="container">
         <div class="two-col">
           <div>
-            <span class="eyebrow">Qualität</span>
             <h2>Unsere Unternehmensziele und Qualitätspolitik</h2>
             <p>
               Unser oberstes Ziel ist die langfristige, nachhaltige und

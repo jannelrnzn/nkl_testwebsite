@@ -25,6 +25,10 @@
   --color-primary-dark: #1b2561;   /* dunkelster Blauton der echten Website – für Hover-Zustände */
   --color-accent: #18538f;         /* Logo-Blau (Schriftzug "NKL") – Akzente, Links */
   --color-purple: #9e3c87;         /* Logo-Lila (Raute im Firmenlogo) – Markenakzent */
+  --color-copper: #b9652f;         /* Kupfer-Orange (Wicklungen der Drosseln) – Akzente, Linien, Kennzeichnungen */
+  --color-copper-light: #e8a573;   /* helles Kupfer – Akzente auf dunklem Grund */
+  --color-brown: #7a4422;          /* Braun – kleine Beschriftungen (Datum, Rubriken) */
+  --color-sand: #f6efe7;           /* warmes Hellbeige – Hintergrund grauer/abgesetzter Abschnitte */
   --color-anthracite: #2b2f36;     /* Anthrazit – Footer, dunkle Flächen */
 
   /* Graustufen */
@@ -167,7 +171,7 @@ p {
   letter-spacing: 0.08em;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--color-purple);
+  color: var(--color-copper);
   margin-bottom: var(--space-xs);
 }
 
@@ -187,11 +191,11 @@ p {
 }
 
 .section {
-  padding-block: var(--space-2xl);
+  padding-block: 4.5rem;
 }
 
 .section--muted {
-  background-color: var(--color-gray-100);
+  background-color: var(--color-sand);
 }
 
 .section-head {
@@ -308,22 +312,9 @@ p {
 }
 
 .logo__icon {
-  height: 44px;
+  height: 50px;
   width: auto;
   flex-shrink: 0;
-}
-
-/* Unterzeile neben dem Logo – „NKL“ steht schon im Logo, daher kein Firmenname als Text */
-.logo__tagline {
-  padding-left: var(--space-sm);
-  margin-left: var(--space-xs);
-  border-left: 1px solid var(--color-gray-300);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-gray-500);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  line-height: 1.2;
 }
 
 .nav-toggle {
@@ -350,6 +341,13 @@ p {
 
 @media (max-width: 1360px) {
   .main-nav__list { gap: 0.9rem; }
+}
+
+/* iPad hochkant: etwas engere Menüleiste */
+@media (max-width: 900px) {
+  .main-nav__list { gap: 0.6rem; }
+  .main-nav__list a,
+  .main-nav__toggle { font-size: 0.9rem; }
 }
 
 .main-nav__list a {
@@ -529,7 +527,7 @@ p {
 }
 
 .hero__eyebrow {
-  color: var(--color-gray-300);
+  color: var(--color-copper-light);
 }
 
 .hero h1 {
@@ -597,16 +595,14 @@ p {
 .page-header {
   background-color: var(--color-primary);
   color: var(--color-white);
-  padding-block: var(--space-xl);
-}
-
-.page-header .eyebrow {
-  color: var(--color-gray-300);
+  padding-block: 1.75rem 2rem;
+  border-bottom: 4px solid var(--color-copper);
 }
 
 .page-header h1 {
   color: var(--color-white);
-  margin-bottom: var(--space-xs);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin-bottom: 0.35rem;
 }
 
 .page-header p {
@@ -615,10 +611,18 @@ p {
   margin-bottom: 0;
 }
 
-.breadcrumb {
+/* Datum über der Überschrift einer Beitragsseite */
+.page-header .page-header__meta {
+  color: var(--color-copper-light);
   font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.breadcrumb {
+  font-size: 0.8rem;
   color: var(--color-gray-300);
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.5rem;
 }
 
 .breadcrumb a {
@@ -693,6 +697,8 @@ p {
 
 .stat-bar__value {
   display: block;
+  border-top: 3px solid var(--color-copper);
+  padding-top: 0.4rem;
   font-size: 1.9rem;
   font-weight: 700;
   color: var(--color-primary);
@@ -981,6 +987,7 @@ a.badge--available:focus-visible {
    10. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
+  border-top: 4px solid var(--color-copper);
   background-color: var(--color-anthracite);
   color: var(--color-gray-300);
   padding-block: var(--space-xl) var(--space-lg);
@@ -1121,7 +1128,7 @@ main:has(> .section--muted:last-child) + .site-footer {
   display: block;
   padding: 1.25rem 1.5rem;
   background-color: var(--color-white);
-  border-left: 4px solid var(--color-primary);
+  border-left: 4px solid var(--color-copper);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
 }
@@ -1137,7 +1144,7 @@ main:has(> .section--muted:last-child) + .site-footer {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-purple);
+  color: var(--color-brown);
   margin-bottom: 0.3rem;
 }
 
@@ -1365,8 +1372,8 @@ main:has(> .section--muted:last-child) + .site-footer {
   }
 }
 
-/* Handy-Menü (☰) schon unter 1200 px – die Kopfzeile mit 9 Menüpunkten passt sonst nicht in eine Zeile */
-@media (max-width: 1199px) {
+/* Handy-Menü (☰) erst unter 768 px – mit 6 Menüpunkten passt die Leiste auch aufs iPad (hoch und quer) */
+@media (max-width: 767px) {
   .nav-toggle {
     display: block;
   }

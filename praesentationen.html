@@ -18,8 +18,7 @@
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
-        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH">
-        <span class="logo__tagline">EMV-Bauteile</span>
+        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH – zur Startseite">
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Navigation öffnen">
@@ -28,28 +27,44 @@
         <span class="nav-toggle__bar"></span>
       </button>
 
+      <!-- Hauptmenü: Gruppen klappen per Klick/Tippen auf (Buttons, keine Links – auch auf dem iPad bedienbar) -->
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="main-nav__list">
-          <li><a href="index.html">Startseite</a></li>
           <li class="main-nav__item--dropdown">
-            <button type="button" class="main-nav__toggle is-active" aria-expanded="false">Unternehmen</button>
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Unternehmen</button>
             <ul class="dropdown">
               <li><a href="unternehmen.html">Firmenportrait</a></li>
               <li><a href="historie.html">Historie</a></li>
               <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
-              <li><a href="praesentationen.html" aria-current="page">Präsentationen</a></li>
               <li><a href="umwelt.html">Umwelt</a></li>
             </ul>
           </li>
-          <li><a href="produkte.html">Produkte</a></li>
-          <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
-          <li><a href="messlabor.html">Messlabor</a></li>
-          <li><a href="beratung.html">Beratung</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Produkte</button>
+            <ul class="dropdown">
+              <li><a href="produkte.html">Produktübersicht</a></li>
+              <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
+            </ul>
+          </li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Leistungen</button>
+            <ul class="dropdown">
+              <li><a href="messlabor.html">EMV-Messlabor</a></li>
+              <li><a href="beratung.html">Beratung &amp; Schulung</a></li>
+            </ul>
+          </li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle is-active" aria-expanded="false">Downloads</button>
+            <ul class="dropdown">
+              <li><a href="downloads.html">Downloads</a></li>
+              <li><a href="praesentationen.html" aria-current="page">Präsentationen</a></li>
+            </ul>
+          </li>
           <li><a href="archiv.html">Archiv</a></li>
           <li class="main-nav__item--dropdown">
-            <a href="kontakt.html">Kontakt</a>
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Kontakt</button>
             <ul class="dropdown">
+              <li><a href="kontakt.html">Kontakt</a></li>
               <li><a href="kontaktformular.html">Kontaktformular</a></li>
               <li><a href="anfahrt.html">Anfahrt</a></li>
             </ul>
@@ -63,8 +78,7 @@
 
     <div class="page-header">
       <div class="container">
-        <p class="breadcrumb"><a href="index.html">Startseite</a> / <a href="unternehmen.html">Unternehmen</a> / Präsentationen</p>
-        <span class="eyebrow">Präsentationen</span>
+        <p class="breadcrumb"><a href="index.html">Startseite</a> / <a href="downloads.html">Downloads</a> / Präsentationen</p>
         <h1>Unternehmenspräsentation</h1>
         <p>Im Folgenden finden Sie Präsentationen zur NKL GmbH und ihren Leistungen.</p>
       </div>

@@ -307,7 +307,7 @@ function seite(item, neuer, aelter) {
     '    <div class="page-header">\n' +
     '      <div class="container">\n' +
     '        <p class="breadcrumb"><a href="../index.html">Startseite</a> / <a href="../archiv.html">Archiv</a></p>\n' +
-    '        <span class="eyebrow">' + (item.archiv ? "Archiv" : "Aktuelles") + " · " + item.datum + "</span>\n" +
+    '        <p class="page-header__meta">' + item.datum + "</p>\n" +
     "        <h1>" + item.titel + "</h1>\n" +
     "      </div>\n" +
     "    </div>\n\n" +

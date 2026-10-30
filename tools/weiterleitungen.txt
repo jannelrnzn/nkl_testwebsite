@@ -1,0 +1,105 @@
+# Weiterleitungen: alte Adressen (Jimdo-Seite nkl-emv.de) und kurze Adressen -> neue Seiten.
+# Damit Lesezeichen, Google-Treffer und Links von anderen Seiten weiter funktionieren.
+# Format je Zeile: <alter Pfad ohne Schrägstriche am Rand>  <neue Seite (relativ zur Startseite)>
+# tools/weiterleitungen.js erzeugt daraus beim Build (tools/build.sh):
+#   - je Pfad eine Umleitungsseite <pfad>/index.html (funktioniert auch auf GitHub Pages)
+#   - Regeln „301 Moved Permanently“ in .htaccess (für den eigenen Webspace, z. B. IONOS)
+
+# --- Unternehmen ---
+unternehmen                         unternehmen.html
+unternehmen/historie                historie.html
+unternehmen/geschäftsfelder         geschaeftsfelder.html
+unternehmen/präsentationen          praesentationen.html
+unternehmen/umwelt                  umwelt.html
+unternehmen/archiv                  archiv.html
+
+# --- Produkte ---
+produkte                            produkte.html
+produkte/gleichtaktdrosseln-5-mhz   produkte.html#gleichtaktdrosseln
+produkte/gleichtaktdrosseln-10-mhz  produkte.html#gleichtaktdrosseln
+produkte/gleichtaktdrosseln-nanokristallin produkte.html#gleichtaktdrosseln
+produkte/gegentaktdrosseln          produkte.html#gegentaktdrosseln
+produkte/entstörfilter              produkte.html#entstoerfilter
+produkte/speicherdrosseln           produkte.html#speicherdrosseln
+produkte/pfc-drosseln               produkte.html#pfc-drosseln
+produkte/stromwandler               produkte.html#stromwandler
+produkte/übertrager                 produkte.html#uebertrager
+
+# --- Anwendungsbereiche ---
+anwendungsbereiche                  anwendungsbereiche.html
+anwendungsbereiche/gleichtaktdrosseln anwendungsbereiche.html
+anwendungsbereiche/gegentaktdrosseln anwendungsbereiche.html
+anwendungsbereiche/entstörfilter    anwendungsbereiche.html
+anwendungsbereiche/speicherdrosseln anwendungsbereiche.html
+anwendungsbereiche/pfc-drosseln     anwendungsbereiche.html
+anwendungsbereiche/stromwandler     anwendungsbereiche.html
+anwendungsbereiche/übertrager       anwendungsbereiche.html
+anwendungsbereiche/sonderbauformen  anwendungsbereiche.html
+anwendungsbereiche/musterkästen     index.html#musterkaesten
+
+# --- Leistungen, Downloads, Kontakt ---
+messlabor                           messlabor.html
+beratung                            beratung.html
+downloads                           downloads.html
+kontakt                             kontakt.html
+kontakt/kontaktformular             kontaktformular.html
+kontakt/anfahrt                     anfahrt.html
+
+# --- Jimdo-Systemseiten ---
+about                               impressum.html
+sitemap                             index.html
+j/privacy                           datenschutz.html
+j/shop/terms                        agb.html
+j/legal-guarantee                   gewaehrleistung.html
+j/withdrawal                        agb.html
+
+# --- Englische Seiten (gibt es nicht mehr) -> deutsche Entsprechung ---
+english                             index.html
+english/company                     unternehmen.html
+english/company/history             historie.html
+english/company/business-areas      geschaeftsfelder.html
+english/company/environment         umwelt.html
+english/company/archive             archiv.html
+english/products                    produkte.html
+english/products/common-mode-chokes-5-mhz produkte.html#gleichtaktdrosseln
+english/products/common-mode-chokes-10-mhz produkte.html#gleichtaktdrosseln
+english/products/common-mode-chokes-nanocrystalline produkte.html#gleichtaktdrosseln
+english/products/differential-mode-chokes produkte.html#gegentaktdrosseln
+english/products/emi-suppression-filters produkte.html#entstoerfilter
+english/products/storage-chokes     produkte.html#speicherdrosseln
+english/products/pfc-chokes         produkte.html#pfc-drosseln
+english/products/current-transformers produkte.html#stromwandler
+english/products/transformers       produkte.html#uebertrager
+english/application-area            anwendungsbereiche.html
+english/application-area/common-mode-chokes-emi anwendungsbereiche.html
+english/application-area/single-chokes-emi anwendungsbereiche.html
+english/application-area/emi-suppression-filters anwendungsbereiche.html
+english/application-area/storage-chokes anwendungsbereiche.html
+english/application-area/pfc-chokes anwendungsbereiche.html
+english/application-area/current-transformers anwendungsbereiche.html
+english/application-area/transformers anwendungsbereiche.html
+english/application-area/special-designs anwendungsbereiche.html
+english/application-area/sample-kits index.html#musterkaesten
+english/emc-tests                   messlabor.html
+english/consulting                  beratung.html
+english/downloads                   downloads.html
+english/contact                     kontakt.html
+english/contact/contact-form        kontaktformular.html
+english/contact/maps                anfahrt.html
+
+# --- Kurze Adressen (z. B. nkl-emv.de/historie) ---
+historie                            historie.html
+geschaeftsfelder                    geschaeftsfelder.html
+geschäftsfelder                     geschaeftsfelder.html
+praesentationen                     praesentationen.html
+präsentationen                      praesentationen.html
+umwelt                              umwelt.html
+archiv                              archiv.html
+aktuelles                           archiv.html
+firmenportrait                      unternehmen.html
+kontaktformular                     kontaktformular.html
+anfahrt                             anfahrt.html
+impressum                           impressum.html
+datenschutz                         datenschutz.html
+agb                                 agb.html
+gewaehrleistung                     gewaehrleistung.html

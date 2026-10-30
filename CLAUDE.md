@@ -23,16 +23,27 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Aufbau
 
-- Kopf: nur Logo-Bild + Unterzeile `.logo__tagline` „EMV-Bauteile“ (kein Text „NKL GmbH“ – steht schon im Logo); Fuß: nur Logo
-  auf weißem Feld (Logo-Blau auf Anthrazit sonst unlesbar). Endet eine Seite mit `.section--muted`, kein Abstand vor dem Footer.
+- **Meeting SPICY + Uwe (30.10.2026) umgesetzt:** Logo 50 px hoch (+14 %), „EMV-Bauteile“ neben dem Logo entfernt,
+  weniger Menüpunkte, flacher blauer Seitenkopf, keine doppelten Überschriften, Farben Kupfer/Braun, Weiterleitungen.
+- Kopf: nur Logo-Bild (Link zur Startseite, kein Menüpunkt „Startseite“); Fuß: nur Logo auf weißem Feld
+  (Logo-Blau auf Anthrazit sonst unlesbar). Endet eine Seite mit `.section--muted`, kein Abstand vor dem Footer.
+- **Farben:** Blau (`--color-primary`, Logo) bleibt Grundfarbe; dazu Kupfer `--color-copper` #b9652f (Linie unter dem
+  Seitenkopf, über dem Footer und über den Kennzahlen, linker Rand der Beitragskarten, Rubriken), helles Kupfer
+  `--color-copper-light` (auf Blau/Video), Braun `--color-brown` #7a4422 (Datum der Beiträge), Hellbeige
+  `--color-sand` #f6efe7 (Hintergrund `.section--muted`). Abschnitte 4,5rem Abstand oben/unten.
+- **Seitenkopf** `.page-header`: flach (ca. 1,75 rem), nur Brotkrume + `h1` + ein Satz, Kupferlinie unten. Keine
+  Rubrik-Zeilen (`.eyebrow`) mehr über Überschriften (Ausnahme: Impressum-Karten, Hero); Beitragsseiten zeigen das
+  Datum als `.page-header__meta`.
 - Jede Seite enthält Kopf (Logo, Navigation) und Fuß komplett im HTML – bei Menü- oder
   Footer-Änderungen **alle** `*.html` anpassen.
-- Navigation: Startseite · Unternehmen ▾ (Firmenportrait = `unternehmen.html`, Historie, Geschäftsfelder,
-  Präsentationen, Umwelt) · Produkte · Anwendungsbereiche · Messlabor · Beratung · Downloads ·
-  Archiv (`archiv.html`, Beiträge) · Kontakt ▾ (Kontaktformular, Anfahrt). Aktive Seite mit `aria-current="page"`.
-- „Unternehmen“ ist **kein Link**, sondern `<button class="main-nav__toggle">` (Klick klappt das Untermenü auf,
-  `initMobileNav`); auf den fünf Unterseiten trägt er `is-active`. Handy-Menü (☰) schon unter 1200 px
-  (`@media (max-width: 1199px)`), sonst passen die 9 Punkte nicht in eine Zeile.
+- **Navigation (6 Punkte, seit 30.10.2026):** Unternehmen ▾ (Firmenportrait, Historie, Geschäftsfelder, Umwelt) ·
+  Produkte ▾ (Produktübersicht, Anwendungsbereiche) · Leistungen ▾ (EMV-Messlabor, Beratung & Schulung) ·
+  Downloads ▾ (Downloads, Präsentationen) · Archiv (Link) · Kontakt ▾ (Kontakt, Kontaktformular, Anfahrt).
+  Gruppen sind `<button class="main-nav__toggle">` (keine Links → auf iPad per Tippen bedienbar, `initMobileNav`),
+  Gruppe der aktuellen Seite trägt `is-active`, Seite selbst `aria-current="page"`. Kopf aller Seiten setzt
+  `python3 tools/menue.py` einheitlich (Menü ändern = Liste `GROUPS` dort anpassen und Skript ausführen). Volle Menüleiste ab 768 px
+  (iPad hoch/quer), darunter ☰ (`@media (max-width: 767px)`); 768–900 px etwas engere Abstände. Mit Playwright
+  (`devices['iPad (gen 7)']`) getestet.
 - Footer-Leiste: Impressum · AGB · Datenschutz · Gesetzliche Gewährleistung; Jahr per JS (`#year`).
 - `css/style.css`: eine Datei, CSS-Variablen oben (Farben, Abstände, Schriften).
 - `js/main.js`: mobiles Menü, Kontaktformular (nur Bestätigungsmeldung), Footer-Jahr, Beiträge
@@ -51,6 +62,17 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   links auf 9597) – von Janne bestätigt (20.10.2026).
 - Uploads über die GitHub-Weboberfläche landen im Repo-Root → verschieben, umbenennen,
   verkleinern, Originale aus dem Repo entfernen.
+
+## Weiterleitungen alter Adressen (seit 30.10.2026)
+
+- Alle Adressen der alten Jimdo-Seite (z. B. `/unternehmen/historie/`, `/produkte/übertrager/`, englische Seiten,
+  `/j/privacy`) und kurze Adressen (`/historie`, `/impressum` …) führen auf die neuen Seiten – Liste in
+  `tools/weiterleitungen.txt` (alter Pfad → neue Seite, auch mit `#anker`, z. B. `produkte.html#uebertrager`;
+  Produktkarten haben ids, Musterkästen auf der Startseite `#musterkaesten`).
+- `tools/weiterleitungen.js` (läuft in `tools/build.sh`) erzeugt je Pfad `dist/<pfad>/index.html` (Sofort-Umleitung,
+  noindex, canonical – wirkt auf GitHub Pages) und `dist/.htaccess` mit `RedirectMatch 301` (für IONOS/Apache, dort
+  beim Go-live prüfen). Neue Seite oder geänderte Adresse → Liste ergänzen. Lokal mit Playwright getestet
+  (auch Umlaute in Adressen).
 
 ## Hero-Video (Startseite, seit 20.10.2026)
 

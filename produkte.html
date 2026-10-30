@@ -17,8 +17,7 @@
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
-        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH">
-        <span class="logo__tagline">EMV-Bauteile</span>
+        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH – zur Startseite">
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Navigation öffnen">
@@ -27,28 +26,44 @@
         <span class="nav-toggle__bar"></span>
       </button>
 
+      <!-- Hauptmenü: Gruppen klappen per Klick/Tippen auf (Buttons, keine Links – auch auf dem iPad bedienbar) -->
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="main-nav__list">
-          <li><a href="index.html">Startseite</a></li>
           <li class="main-nav__item--dropdown">
             <button type="button" class="main-nav__toggle" aria-expanded="false">Unternehmen</button>
             <ul class="dropdown">
               <li><a href="unternehmen.html">Firmenportrait</a></li>
               <li><a href="historie.html">Historie</a></li>
               <li><a href="geschaeftsfelder.html">Geschäftsfelder</a></li>
-              <li><a href="praesentationen.html">Präsentationen</a></li>
               <li><a href="umwelt.html">Umwelt</a></li>
             </ul>
           </li>
-          <li><a href="produkte.html" aria-current="page">Produkte</a></li>
-          <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
-          <li><a href="messlabor.html">Messlabor</a></li>
-          <li><a href="beratung.html">Beratung</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle is-active" aria-expanded="false">Produkte</button>
+            <ul class="dropdown">
+              <li><a href="produkte.html" aria-current="page">Produktübersicht</a></li>
+              <li><a href="anwendungsbereiche.html">Anwendungsbereiche</a></li>
+            </ul>
+          </li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Leistungen</button>
+            <ul class="dropdown">
+              <li><a href="messlabor.html">EMV-Messlabor</a></li>
+              <li><a href="beratung.html">Beratung &amp; Schulung</a></li>
+            </ul>
+          </li>
+          <li class="main-nav__item--dropdown">
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Downloads</button>
+            <ul class="dropdown">
+              <li><a href="downloads.html">Downloads</a></li>
+              <li><a href="praesentationen.html">Präsentationen</a></li>
+            </ul>
+          </li>
           <li><a href="archiv.html">Archiv</a></li>
           <li class="main-nav__item--dropdown">
-            <a href="kontakt.html">Kontakt</a>
+            <button type="button" class="main-nav__toggle" aria-expanded="false">Kontakt</button>
             <ul class="dropdown">
+              <li><a href="kontakt.html">Kontakt</a></li>
               <li><a href="kontaktformular.html">Kontaktformular</a></li>
               <li><a href="anfahrt.html">Anfahrt</a></li>
             </ul>
@@ -63,7 +78,6 @@
     <div class="page-header">
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Startseite</a> / Produkte</p>
-        <span class="eyebrow">Produktprogramm</span>
         <h1>EMV-Bauteile für jede Anwendung</h1>
         <p>Über 7.000 Produkte sind bei uns als Datenblätter hinterlegt – die überwiegende Mehrzahl kundenspezifische Entwicklungen. Ein Überblick über unser Kernprogramm.</p>
       </div>
@@ -81,7 +95,7 @@
         </p>
         <div class="grid grid--4">
 
-          <div class="card">
+          <div class="card" id="gleichtaktdrosseln">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="3"/>
               <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="3"/>
@@ -95,7 +109,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="gegentaktdrosseln">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <path d="M12 24c0-6 4-10 10-10M26 34c6 0 10-4 10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
               <circle cx="12" cy="24" r="4" stroke="currentColor" stroke-width="3"/>
@@ -111,7 +125,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="entstoerfilter">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <rect x="8" y="16" width="32" height="16" rx="2" stroke="currentColor" stroke-width="3"/>
               <line x1="14" y1="16" x2="14" y2="32" stroke="currentColor" stroke-width="3"/>
@@ -125,7 +139,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="speicherdrosseln">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <path d="M8 32c4-16 8-16 12 0s8 16 12 0 8-16 8-16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -137,7 +151,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="pfc-drosseln">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <path d="M6 30c6-14 12 14 18 0s12-14 18 0" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -149,7 +163,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="stromwandler">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="3"/>
               <line x1="10" y1="24" x2="4" y2="24" stroke="currentColor" stroke-width="3"/>
@@ -163,7 +177,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="uebertrager">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <rect x="6" y="14" width="14" height="20" rx="2" stroke="currentColor" stroke-width="3"/>
               <rect x="28" y="14" width="14" height="20" rx="2" stroke="currentColor" stroke-width="3"/>
@@ -177,7 +191,7 @@
             <a class="card__link" href="kontaktformular.html">Anfrage stellen &rarr;</a>
           </div>
 
-          <div class="card">
+          <div class="card" id="sonderbauformen">
             <svg class="card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <path d="M24 6l6 12 13 2-9.5 9 2.5 13-12-6-12 6 2.5-13L5 20l13-2z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
             </svg>
