@@ -25,7 +25,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 - **Meeting SPICY + Uwe (30.10.2026) umgesetzt:** Logo 50 px hoch (+14 %), „EMV-Bauteile“ neben dem Logo entfernt,
   weniger Menüpunkte, flacher blauer Seitenkopf, keine doppelten Überschriften, Farben Kupfer/Braun, Weiterleitungen.
-- Kopf: nur Logo-Bild (Link zur Startseite, kein Menüpunkt „Startseite“); Fuß: nur Logo auf weißem Feld
+- Kopf: nur Logo-Bild (Link zur Startseite); Menüpunkt „Startseite“ wieder drin (Janne, 31.10.2026); Fuß: nur Logo auf weißem Feld
   (Logo-Blau auf Anthrazit sonst unlesbar). Endet eine Seite mit `.section--muted`, kein Abstand vor dem Footer.
 - **Farben:** Blau (`--color-primary`, Logo) bleibt Grundfarbe; dazu Kupfer `--color-copper` #b9652f (Linie unter dem
   Seitenkopf, über dem Footer und über den Kennzahlen, linker Rand der Beitragskarten, Rubriken), helles Kupfer
@@ -36,7 +36,7 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
   Datum als `.page-header__meta`.
 - Jede Seite enthält Kopf (Logo, Navigation) und Fuß komplett im HTML – bei Menü- oder
   Footer-Änderungen **alle** `*.html` anpassen.
-- **Navigation (6 Punkte, seit 30.10.2026):** Unternehmen ▾ (Firmenportrait, Historie, Geschäftsfelder, Umwelt) ·
+- **Navigation (7 Punkte, seit 30.10.2026; Startseite seit 31.10.2026 wieder drin):** Startseite · Unternehmen ▾ (Firmenportrait, Historie, Geschäftsfelder, Umwelt) ·
   Produkte ▾ (Produktübersicht, Anwendungsbereiche) · Leistungen ▾ (EMV-Messlabor, Beratung & Schulung) ·
   Downloads ▾ (Downloads, Präsentationen) · Archiv (Link) · Kontakt ▾ (Kontakt, Kontaktformular, Anfahrt).
   Gruppen sind `<button class="main-nav__toggle">` (keine Links → auf iPad per Tippen bedienbar, `initMobileNav`),

@@ -4,6 +4,7 @@
 # (Beitragsseiten übernehmen den Kopf beim Build automatisch aus archiv.html.)
 import glob,re,html
 GROUPS=[
+ ("Startseite","index.html"),
  ("Unternehmen",[("unternehmen.html","Firmenportrait"),("historie.html","Historie"),("geschaeftsfelder.html","Geschäftsfelder"),("umwelt.html","Umwelt")]),
  ("Produkte",[("produkte.html","Produktübersicht"),("anwendungsbereiche.html","Anwendungsbereiche")]),
  ("Leistungen",[("messlabor.html","EMV-Messlabor"),("beratung.html","Beratung &amp; Schulung")]),
