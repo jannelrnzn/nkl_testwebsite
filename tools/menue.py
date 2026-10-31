@@ -16,7 +16,7 @@ def header(cur):
     out=['''  <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
-        <img class="logo__icon" src="assets/images/logo.png" alt="NKL GmbH – zur Startseite">
+        <img class="logo__icon" src="assets/images/logo-kopf.png" alt="NKL GmbH – zur Startseite">
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Navigation öffnen">

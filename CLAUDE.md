@@ -23,7 +23,10 @@ Statische Website (HTML/CSS/JS, kein Build, kein Backend). Repo:
 
 ## Aufbau
 
-- **Meeting SPICY + Uwe (30.10.2026) umgesetzt:** Logo 50 px hoch (+14 %), „EMV-Bauteile“ neben dem Logo entfernt,
+- **Logo (31.10.2026, „so groß wie möglich“):** `assets/images/logo-kopf.png` = `logo.png` ohne transparenten Rand
+  (zugeschnitten, 168 px hoch), Kopf 58 px hoch bei 84 px Kopfzeile, 768–900 px: 46 px, Handy: 50 px (Kopfzeile 76 px),
+  Fuß 46 px auf weißem Feld. `logo.png` (mit Rand) nutzt nur noch das CMS (`admin/config.yml`).
+- **Meeting SPICY + Uwe (30.10.2026) umgesetzt:** Logo größer, „EMV-Bauteile“ neben dem Logo entfernt,
   weniger Menüpunkte, flacher blauer Seitenkopf, keine doppelten Überschriften, Farben Kupfer/Braun, Weiterleitungen.
 - Kopf: nur Logo-Bild (Link zur Startseite); Menüpunkt „Startseite“ wieder drin (Janne, 31.10.2026); Fuß: nur Logo auf weißem Feld
   (Logo-Blau auf Anthrazit sonst unlesbar). Endet eine Seite mit `.section--muted`, kein Abstand vor dem Footer.

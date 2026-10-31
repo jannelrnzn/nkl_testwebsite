@@ -294,7 +294,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
-  min-height: 76px;
+  min-height: 84px;
 }
 
 .logo {
@@ -311,8 +311,9 @@ p {
   text-decoration: none;
 }
 
+/* Logo ohne Rand (logo-kopf.png, zugeschnitten): so groß wie die Kopfzeile es zulässt */
 .logo__icon {
-  height: 50px;
+  height: 58px;
   width: auto;
   flex-shrink: 0;
 }
@@ -343,8 +344,9 @@ p {
   .main-nav__list { gap: 0.9rem; }
 }
 
-/* iPad hochkant: etwas engere Menüleiste */
+/* iPad hochkant: etwas engere Menüleiste, Logo etwas kleiner, damit alle Punkte in eine Zeile passen */
 @media (max-width: 900px) {
+  .logo__icon { height: 46px; }
   .main-nav__list { gap: 0.6rem; }
   .main-nav__list a,
   .main-nav__toggle { font-size: 0.9rem; }
@@ -1008,6 +1010,7 @@ a.badge--available:focus-visible {
 
 /* Logo-Blau ist auf dem dunklen Footer kaum lesbar → weißes Feld dahinter */
 .footer-brand .logo__icon {
+  height: 46px;
   box-sizing: content-box;
   padding: 0.4rem 0.6rem;
   background-color: var(--color-white);
@@ -1374,6 +1377,10 @@ main:has(> .section--muted:last-child) + .site-footer {
 
 /* Handy-Menü (☰) erst unter 768 px – mit 6 Menüpunkten passt die Leiste auch aufs iPad (hoch und quer) */
 @media (max-width: 767px) {
+  /* Handy: Kopfzeile 76 px hoch (Menü klappt darunter auf) */
+  .site-header .container { min-height: 76px; }
+  .logo__icon { height: 50px; }
+
   .nav-toggle {
     display: block;
   }
